@@ -1,6 +1,5 @@
 'use client'
 
-import { useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   AlertCircle,
@@ -13,6 +12,7 @@ import {
   Scroll,
   Sparkles,
 } from 'lucide-react'
+import { useCallback, useMemo, useState } from 'react'
 import { useLibrary, type Book } from '@/hooks/use-library'
 import { toast } from '@/hooks/use-toast'
 import { DustParticles } from '@/components/monastery/dust-particles'
@@ -23,11 +23,25 @@ import { ParchmentCard } from '@/components/monastery/parchment-card'
 import { MonasteryEmblem } from '@/components/monastery/monastery-emblem'
 import { TomeCard } from '@/components/monastery/tome-card'
 import { AddBookForm } from '@/components/monastery/add-book-form'
+import { BookShelf } from '@/components/monastery/book-shelf'
+import { ReadingDesk } from '@/components/monastery/reading-desk'
 import { formatMonthYear, MONTHS_SHORT } from '@/lib/dates'
 
 export default function Home() {
   const { books, stats, loading, error, addBook, updateBook, deleteBook } =
     useLibrary()
+
+  const [highlightId, setHighlightId] = useState<string | null>(null)
+
+  // Rola até o card detalhado de um tomo (clicado na estante ou na mesa) e o destaca.
+  const focusTome = useCallback((id: string) => {
+    const el = document.getElementById(`tome-${id}`)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      setHighlightId(id)
+      window.setTimeout(() => setHighlightId((cur) => (cur === id ? null : cur)), 1800)
+    }
+  }, [])
 
   const readingBooks = useMemo(
     () => books.filter((b) => b.status === 'reading'),
@@ -215,6 +229,14 @@ export default function Home() {
           </ParchmentCard>
         )}
 
+        {/* ===== Scriptório: a cena física (estante + mesa) ===== */}
+        <ScriptoriumScene
+          readingBooks={readingBooks}
+          finishedBooks={finishedBooks}
+          loading={loading}
+          onFocusTome={focusTome}
+        />
+
         {/* ===== Painel de Estatísticas ===== */}
         <StatsPanel stats={stats} loading={loading} />
 
@@ -254,6 +276,7 @@ export default function Home() {
                     key={b.id}
                     book={b}
                     index={i}
+                    highlighted={highlightId === b.id}
                     onMarkFinished={handleMarkFinished}
                     onReopen={handleReopen}
                     onDelete={handleDelete}
@@ -308,6 +331,7 @@ export default function Home() {
                           key={b.id}
                           book={b}
                           index={i}
+                          highlighted={highlightId === b.id}
                           onMarkFinished={handleMarkFinished}
                           onReopen={handleReopen}
                           onDelete={handleDelete}
@@ -339,6 +363,81 @@ export default function Home() {
 }
 
 /* ===================== Subcomponentes locais ===================== */
+
+function ScriptoriumScene({
+  readingBooks,
+  finishedBooks,
+  loading,
+  onFocusTome,
+}: {
+  readingBooks: Book[]
+  finishedBooks: Book[]
+  loading: boolean
+  onFocusTome: (id: string) => void
+}) {
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+      className="mb-14 mt-10"
+    >
+      <div className="mb-5 flex items-center gap-3">
+        <Library className="h-5 w-5 text-gold" />
+        <span className="font-display text-[0.65rem] uppercase tracking-[0.35em] text-gold/70">
+          O Scriptório
+        </span>
+        <div className="gold-divider h-px flex-1" />
+      </div>
+
+      {/* Cena: estante ao fundo + mesa à frente (sobreposta, à direita em desktop) */}
+      <div className="relative">
+        {/* Estante de fundo */}
+        <BookShelf books={finishedBooks} onSelect={onFocusTome} />
+
+        {/* Mesa de leitor sobreposta, à frente da estante */}
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-10 mx-auto mt-6 max-w-2xl"
+        >
+          <div className="wood-panel rounded-[var(--radius)] p-4 sm:p-6">
+            <div className="mb-3 flex items-center justify-center gap-2">
+              <BookOpen className="h-4 w-4 text-gold/70" />
+              <span className="font-display text-[0.65rem] uppercase tracking-[0.3em] text-gold/70">
+                Mesa do Leitor · Em Leitura
+              </span>
+            </div>
+            {loading ? (
+              <div className="flex h-40 items-center justify-center gap-3">
+                <Loader2 className="h-5 w-5 animate-spin text-gold" />
+                <span className="font-body text-sm italic text-parchment/60">
+                  Dispondo os tomos sobre a mesa...
+                </span>
+              </div>
+            ) : (
+              <ReadingDesk books={readingBooks} onSelect={onFocusTome} />
+            )}
+          </div>
+        </motion.div>
+
+        {/* Luz de vela decorativa sobre a cena (apenas telas grandes) */}
+        <div
+          className="pointer-events-none absolute -top-4 left-1/2 z-20 hidden h-32 w-64 -translate-x-1/2 lg:block"
+          style={{
+            background:
+              'radial-gradient(ellipse at center top, oklch(0.6 0.12 60 / 0.18), transparent 70%)',
+          }}
+        />
+      </div>
+
+      <p className="mt-4 text-center font-body text-xs italic text-parchment/40">
+        Clique numa lombada ou num tomo da mesa para localizar seu registro detalhado abaixo.
+      </p>
+    </motion.section>
+  )
+}
 
 function SectionHeader({
   icon,

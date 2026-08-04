@@ -47,3 +47,53 @@ Stage Summary:
 - Crônica de leituras agrupada por mês/ano, com datas de início, conclusão, duração e tempo relativo.
 - Footer sticky validado; design responsivo (mobile 390px e desktop 1440px verificados).
 - Artefatos: schema prisma, 3 API routes, hook use-library, 8 componentes monastery, página única, tema CSS completo.
+
+---
+Task ID: 2
+Agent: Z.ai Code (main)
+Task: Adicionar animações e efeitos visuais de livros sendo adicionados à estante ou retirados, e os que estão em leitura sendo empilhados em uma mesa à frente da estante.
+
+Work Log:
+- Lido o worklog da Task 1 para entender o estado atual (biblioteca monástica funcional com estatísticas, formulário, crônica e cards).
+- Criado utilitário compartilhado `src/lib/book-colors.ts` com: spineColorFor, spineHighlightFor, spineShadowFor (gradientes de lombada), spineTiltFor (rotação pseudo-aleatória estável), spineHeightFor e spineWidthFor (dimensões variadas realistas).
+- Criado componente `src/components/monastery/book-shelf.tsx`:
+  - Estante de madeira com cornija ornamental e múltiplas prateleiras (9 tomos por prateleira).
+  - Cada lombada (ShelfSpine) é um motion.button com gradiente de couro, filetes dourados duplos, título vertical (writing-mode: vertical-rl), hover com "pull-out" (y: -10 + brilho).
+  - Animações: initial (cai de cima com scaleY) + exit (sobe e encolhe) via AnimatePresence popLayout.
+  - Cada prateleira tem fundo recessado com sombra interna + tábua de madeira com veios.
+  - Estado vazio com ícone e mensagem "A estante aguarda...".
+- Criado componente `src/components/monastery/reading-desk.tsx`:
+  - Mesa de leitor com tampo em perspectiva (perspective + rotateX), pés/cavaletes decorativos, sombra no chão.
+  - Pilha de tomos deitados (DeskBook): cada tomo tem lombada colorida à esquerda, capa com título, páginas listradas à direita, rotação leve natural.
+  - Animação de entrada: tomo cai do topo (y: -180 → 0) com spring/bounce; o tomo do topo quica mais.
+  - Animação de saída: tomo sobe e some (y: -120, opacity 0) — sugere "voar para a estante".
+  - Marcador de página (fita carmesim) no tomo do topo da pilha.
+  - AnimatePresence popLayout + layout prop para reorganização suave quando o meio da pilha muda.
+- Adicionadas classes CSS em `src/app/globals.css`: .bookshelf (fundo de madeira com veios), .shelf-cornice (cornija com ornamentos ::before/::after), .reading-desk (perspective), .desk-top (tampo em rotateX com veios).
+- Atualizado `src/app/page.tsx`:
+  - Adicionada seção visual "O Scriptório" entre o header e as estatísticas: estante de fundo + mesa de leitor sobreposta em um wood-panel, com luz de vela decorativa.
+  - Adicionado estado `highlightId` e handler `focusTome(id)` que faz scrollIntoView no card detalhado + destaca com ring-gold por 1.8s.
+  - Passado `highlighted` prop para todos os TomeCards (Em Leitura e Crônica).
+  - Import de useCallback/useState corrigido (havia duplicação de useMemo que causou erro de build inicial).
+- Atualizado `src/components/monastery/tome-card.tsx`:
+  - Adicionada prop `highlighted` que aplica ring-2 ring-gold + glow shadow + scale 1.01 via animate condicional.
+  - Adicionado `id={`tome-${book.id}`}` para âncora de scroll e classe `scroll-mt-24` para offset.
+- Corrigido bug de hidratação em `src/components/monastery/dust-particles.tsx`: partículas com Math.random() eram geradas no useMemo durante SSR, divergindo do cliente. Movido para useState + useEffect (geração apenas no cliente após montagem).
+- `bun run lint` passou sem erros.
+- Verificação com Agent Browser (todas as animações testadas):
+  - Página carrega sem erros de console/hidratação.
+  - Adicionar livro em leitura → tomo cai na pilha da mesa (animate drop com bounce).
+  - "Selar como concluído" → tomo sai da mesa (sobe e some) e lombada entra na estante (animate enter).
+  - "Reabrir leitura" → lombada sai da estante e tomo volta a cair na mesa.
+  - Remover → tomo desaparece com animação de exit.
+  - Clicar numa lombada da estante → rola até o card detalhado e destaca com ring-gold (verificado hasRing:true).
+  - Clicar num tomo da mesa → mesma interação de destaque.
+  - Responsivo: testado em 390px (mobile) e 1440px (desktop) sem erros.
+  - VLM confirmou: estante com lombadas coloridas + filetes dourados + títulos verticais visíveis; mesa com pilha de tomos deitados; atmosfera medieval coerente.
+
+Stage Summary:
+- Cena física do scriptório implementada: estante de prateleiras (concluídos) + mesa de leitor à frente (em leitura, com pilha de tomos).
+- Animações de adicionar/remover/selar/reabrir com framer-motion (spring, bounce, layout animations, AnimatePresence popLayout).
+- Interação: clicar em lombada da estante ou tomo da mesa rola até o card detalhado e o destaca.
+- Bug de hidratação (Math.random no SSR) corrigido.
+- Artefatos novos: book-colors.ts, book-shelf.tsx, reading-desk.tsx; atualizações em page.tsx, tome-card.tsx, dust-particles.tsx, globals.css.

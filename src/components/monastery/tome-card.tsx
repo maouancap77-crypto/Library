@@ -44,6 +44,7 @@ function spineColorFor(id: string): string {
 interface TomeCardProps {
   book: Book
   index?: number
+  highlighted?: boolean
   onMarkFinished: (id: string) => void
   onReopen: (id: string) => void
   onDelete: (id: string) => void
@@ -53,6 +54,7 @@ interface TomeCardProps {
 export function TomeCard({
   book,
   index = 0,
+  highlighted = false,
   onMarkFinished,
   onReopen,
   onDelete,
@@ -81,13 +83,20 @@ export function TomeCard({
 
   return (
     <motion.article
+      id={`tome-${book.id}`}
       layout
       initial={{ opacity: 0, y: 24, rotateX: -8 }}
-      animate={{ opacity: 1, y: 0, rotateX: 0 }}
+      animate={
+        highlighted
+          ? { opacity: 1, y: -2, rotateX: 0, scale: 1.01 }
+          : { opacity: 1, y: 0, rotateX: 0, scale: 1 }
+      }
       exit={{ opacity: 0, y: -16, transition: { duration: 0.3 } }}
       transition={{ delay: Math.min(index * 0.05, 0.4), type: 'spring', stiffness: 120, damping: 18 }}
       whileHover={{ y: -4 }}
-      className="wood-panel group relative flex gap-0 overflow-hidden rounded-[var(--radius)]"
+      className={`wood-panel group relative flex scroll-mt-24 gap-0 overflow-hidden rounded-[var(--radius)] transition-shadow duration-500 ${
+        highlighted ? 'ring-2 ring-gold shadow-[0_0_24px_oklch(0.7_0.13_75/0.45)]' : ''
+      }`}
     >
       {/* Lombada encadernada */}
       <div

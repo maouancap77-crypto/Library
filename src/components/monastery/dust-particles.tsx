@@ -1,30 +1,50 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useEffect, useState } from 'react'
 
 interface DustParticlesProps {
   count?: number
   className?: string
 }
 
+interface Particle {
+  id: number
+  size: number
+  left: number
+  duration: number
+  delay: number
+  drift: number
+  opacity: number
+}
+
 /**
  * Partículas de poeira dourada flutuando lentamente para cima,
  * evocando o ar de uma biblioteca monástica iluminada por velas.
+ *
+ * As partículas são geradas apenas no cliente (após a montagem) para evitar
+ * divergência entre o HTML renderizado no servidor e o do navegador, já que
+ * os valores usam Math.random().
  */
 export function DustParticles({ count = 28, className = '' }: DustParticlesProps) {
-  const particles = useMemo(
-    () =>
+  const [particles, setParticles] = useState<Particle[]>([])
+
+  useEffect(() => {
+    setParticles(
       Array.from({ length: count }).map((_, i) => {
         const size = 1 + Math.random() * 3
-        const left = Math.random() * 100
         const duration = 18 + Math.random() * 22
-        const delay = Math.random() * -duration
-        const drift = (Math.random() - 0.5) * 120
-        const opacity = 0.2 + Math.random() * 0.4
-        return { id: i, size, left, duration, delay, drift, opacity }
+        return {
+          id: i,
+          size,
+          left: Math.random() * 100,
+          duration,
+          delay: Math.random() * -duration,
+          drift: (Math.random() - 0.5) * 120,
+          opacity: 0.2 + Math.random() * 0.4,
+        }
       }),
-    [count],
-  )
+    )
+  }, [count])
 
   return (
     <div
