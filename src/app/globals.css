@@ -542,6 +542,69 @@
 .animate-cloud-drift { animation: cloud-drift 90s linear infinite; }
 .animate-bird-fly { animation: bird-fly 24s linear infinite; }
 
+/* ===== Mesa do leitor aprimorada ===== */
+
+/* Páginas do livro aberto fluttering sutilmente (como ao virar página). */
+@keyframes page-flutter {
+  0%, 92%, 100% { transform: rotateY(0deg); }
+  94% { transform: rotateY(-6deg); }
+  96% { transform: rotateY(4deg); }
+  98% { transform: rotateY(-2deg); }
+}
+
+/* Halo de luz quente atrás do livro aberto no púlpito. */
+@keyframes lectern-glow {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+/* Pool de luz da vela sobre a mesa (pulsar suave). */
+@keyframes candle-pool {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  50% { opacity: 0.95; transform: scale(1.04); }
+}
+
+/* Pena de ganso balançando levemente no tinteiro. */
+@keyframes quill-sway {
+  0%, 100% { transform: rotate(3deg); }
+  50% { transform: rotate(-2deg); }
+}
+
+/* Areia caindo na ampulheta (fio contínuo). */
+@keyframes sand-fall {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 0.9; }
+  90% { opacity: 0.9; }
+  100% { transform: translateY(120%); opacity: 0; }
+}
+
+/* Brilho da tinta no tinteiro (reflexo). */
+@keyframes ink-shimmer {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.85; }
+}
+
+/* Fita marcadora balançando fora do livro. */
+@keyframes ribbon-sway {
+  0%, 100% { transform: rotate(3deg); }
+  50% { transform: rotate(5.5deg); }
+}
+
+/* Poeira flutuando na zona da mesa (mais lenta e dourada). */
+@keyframes desk-mote {
+  0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+  20% { opacity: 0.5; }
+  80% { opacity: 0.4; }
+  100% { transform: translate(var(--mote-x, 30px), -60px) scale(1); opacity: 0; }
+}
+
+.animate-page-flutter { animation: page-flutter 12s ease-in-out infinite; transform-origin: left center; }
+.animate-lectern-glow { animation: lectern-glow 5s ease-in-out infinite; }
+.animate-candle-pool { animation: candle-pool 3s ease-in-out infinite; }
+.animate-quill-sway { animation: quill-sway 4.5s ease-in-out infinite; transform-origin: bottom center; }
+.animate-ink-shimmer { animation: ink-shimmer 3.5s ease-in-out infinite; }
+.animate-ribbon-sway { animation: ribbon-sway 4s ease-in-out infinite; transform-origin: top center; }
+
 /* Cena 3D: container com perspectiva. */
 .monastery-scene {
   perspective: 900px;

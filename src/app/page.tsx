@@ -407,17 +407,33 @@ function ScriptoriumScene({
           initial={{ opacity: 0, y: 30, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="relative z-10 mx-auto mt-6 max-w-2xl"
+          className="relative z-10 mx-auto mt-8 max-w-3xl"
         >
-          <div className="wood-panel rounded-[var(--radius)] p-4 sm:p-6">
-            <div className="mb-3 flex items-center justify-center gap-2">
-              <BookOpen className="h-4 w-4 text-gold/70" />
-              <span className="font-display text-[0.65rem] uppercase tracking-[0.3em] text-gold/70">
-                Mesa do Leitor · Em Leitura
-              </span>
+          <div
+            className="relative overflow-hidden rounded-[var(--radius)] border border-gold/25 p-5 sm:p-8"
+            style={{
+              background:
+                'radial-gradient(ellipse 90% 70% at 50% 30%, oklch(0.22 0.035 40) 0%, oklch(0.16 0.025 35) 70%, oklch(0.12 0.02 32) 100%)',
+              boxShadow:
+                'inset 0 0 40px oklch(0.05 0 0 / 0.6), 0 10px 30px oklch(0.05 0 0 / 0.5)',
+            }}
+          >
+            {/* Cabeçalho da mesa */}
+            <div className="mb-4 flex flex-col items-center gap-1 text-center">
+              <div className="flex items-center gap-2">
+                <BookOpen className="h-4 w-4 text-gold/70" />
+                <span className="font-display text-[0.7rem] uppercase tracking-[0.35em] text-gold/80">
+                  Mesa do Leitor
+                </span>
+                <BookOpen className="h-4 w-4 -scale-x-100 text-gold/70" />
+              </div>
+              <p className="font-body text-xs italic text-parchment/45">
+                O tomo aberto no púlpito é a leitura ativa; os demais aguardam na pilha.
+              </p>
             </div>
+
             {loading ? (
-              <div className="flex h-40 items-center justify-center gap-3">
+              <div className="flex h-48 items-center justify-center gap-3">
                 <Loader2 className="h-5 w-5 animate-spin text-gold" />
                 <span className="font-body text-sm italic text-parchment/60">
                   Dispondo os tomos sobre a mesa...
@@ -440,7 +456,7 @@ function ScriptoriumScene({
       </div>
 
       <p className="mt-4 text-center font-body text-xs italic text-parchment/40">
-        Clique numa lombada ou num tomo da mesa para localizar seu registro detalhado abaixo.
+        Clique no livro aberto, numa lombada da estante ou num tomo da pilha para localizar seu registro.
       </p>
     </motion.section>
   )

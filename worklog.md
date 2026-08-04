@@ -161,3 +161,43 @@ Stage Summary:
 - Música ambient bardcore procedural (Web Audio API): drone organum + vento + harpa dórica + sino FM, com toggle mute/unmute.
 - Hook useClientOnly (useSyncExternalStore) resolve hydration mismatch de Math.random.
 - Artefatos novos: monastery-scene.tsx, ambient-sound.tsx, use-client-only.ts; atualizações em page.tsx e globals.css.
+
+---
+Task ID: 5
+Agent: Z.ai Code (main)
+Task: Aprimorar a experiência, UI e design da mesa do leitor (em leitura) — torná-la uma verdadeira mesa de scriptorium com livro aberto sobre púlpito, pilha de tomos fechados detalhados e acessórios de mosteiro.
+
+Work Log:
+- Lido worklog anterior e o reading-desk.tsx atual (pilha simples de tomos deitados sem hero visual).
+- Adicionados keyframes em globals.css: page-flutter (páginas fluttering), lectern-glow (halo do púlpito), candle-pool (pool de luz da vela), quill-sway (pena balançando), sand-fall (areia da ampulheta), ink-shimmer (brilho da tinta), ribbon-sway (fita marcadora), desk-mote (poeira da mesa).
+- Reescrito completamente `src/components/monastery/reading-desk.tsx`:
+  - **Púlpito (lectern)**: sustenta o tomo em leitura ATIVA (books[0]) mostrado como LIVRO ABERTO com duas páginas de pergaminho.
+  - **OpenBook**: duas páginas (esquerda + direita) com textura de pergaminho envelhecido, manchas, linhas pautadas, borda decorativa interna, lombada central (gutter), bordas douradas (gold leaf), fita marcadora pendente (animate-ribbon-sway), capa de trás visível na cor do couro.
+    - Página esquerda: ornamento superior, drop cap (capitular iluminada em fonte gótica) + título em caligrafia + autor em itálico + linhas gregas de manuscrito.
+    - Página direita: data de início, dias de leitura (em numeral gótico), linhas gregas, pequeno selo de cera.
+    - Animações: entrada (rotateX/scale spring), saída (sobe e some), hover (brilho).
+  - **EmptyOpenBook**: livro aberto vazio com "A mesa aguarda um tomo aberto" e pena ícone.
+  - **LecternStand**: duas pernas anguladas de madeira sustentando o púlpito.
+  - **PileOfBooks + ClosedBook**: pilha de tomos fechados (books.slice(1)) com lombada colorida, capa, páginas, cantos de metal (cantoneiras douradas), filete dourado, fita marcadora no topo. Animações spring/bounce de entrada/saída.
+  - **DeskCandle**: vela alta em castiçal de latão com chama tremulante (núcleo brilhante), gotejamento de cera, pool de luz animado.
+  - **InkwellWithQuill**: tinteiro de vidro (maior) com tinta brilhante (animate-ink-shimmer), abertura, reflexos, e pena de ganso SVG detalhada (pluma com barbas) balançando (animate-quill-sway).
+  - **Hourglass**: ampulheta em moldura de madeira com colunas, duas ampolas (clip-path), areia no topo + monte no fundo + fio caindo (sand-fall animation), reflexo no vidro.
+  - **DeskDust**: 14 partículas de poeira dourada flutuando na zona da mesa (useClientOnly para evitar hydration mismatch).
+  - **Mesa**: tampo em perspectiva (desk-top), borda frontal 3D, sombra no chão, runner de veludo sob os objetos.
+- Layout da superfície: grid responsivo (2 colunas no mobile, 4 no desktop) com acessórios bem espaçados e centralizados em cada célula.
+- Atualizado ScriptoriumScene no page.tsx: painel mais largo (max-w-3xl), moldura com gradiente radial e border-gold, cabeçalho com dois BookOpen espelhados, texto contextual "O tomo aberto no púlpito é a leitura ativa; os demais aguardam na pilha."
+- Primeira análise VLM revelou acessórios pequenos/comprimidos. Ajustes: aumentei todos os acessórios (vela h-14, tinteiro h-12, ampulheta h-20, pilha thickness 20px width 150px+), mudei layout de flex-wrap para grid de 4 colunas, dei altura mínima de 130px aos containers.
+- `bun run lint` passou sem erros.
+- Verificação com Agent Browser:
+  - Console 100% limpo.
+  - VLM confirmou TODOS os elementos visíveis e bem proporcionados: "livro aberto no topo, pilha de livros fechados com lombadas coloridas, vela com castiçal, tinteiro com pena de ganso, ampulheta com areia... bem espaçados, sem compressão/corte, atmosfera medieval imersiva".
+  - Fluxo testado: adicionar novo livro → vira livro ABERTO no púlpito (leitura ativa), livros anteriores descem para a pilha.
+  - Selar livro ativo → sai do púlpito (animado), vai para a estante; próximo da pilha sobe para o púlpito.
+  - Mobile (390px): grid 2 colunas, sem cortes problemáticos, legível.
+
+Stage Summary:
+- Mesa do leitor transformada em scriptorium completo: púlpito com livro aberto (hero), pilha de tomos fechados detalhados, acessórios (vela em castiçal, tinteiro com pena de ganso, ampulheta).
+- Livro aberto mostra título/autor/datas em caligrafia sobre pergaminho envelhecido com drop cap iluminada.
+- Animações ricas: flutter de páginas, halo do púlpito, pool de luz da vela, pena balançando, areia caindo, brilho da tinta, fita marcadora, poeira flutuante.
+- Transições animadas: adicionar → livro cai no púlpito; selar → livro aberto voa para a estante e próximo da pilha sobe.
+- Responsivo (mobile 2 colunas, desktop 4 colunas); console limpo.
