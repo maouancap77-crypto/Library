@@ -25,6 +25,8 @@ import { TomeCard } from '@/components/monastery/tome-card'
 import { AddBookForm } from '@/components/monastery/add-book-form'
 import { BookShelf } from '@/components/monastery/book-shelf'
 import { ReadingDesk } from '@/components/monastery/reading-desk'
+import { MonasteryScene } from '@/components/monastery/monastery-scene'
+import { AmbientSound } from '@/components/monastery/ambient-sound'
 import { formatMonthYear, MONTHS_SHORT } from '@/lib/dates'
 
 export default function Home() {
@@ -158,14 +160,19 @@ export default function Home() {
 
   return (
     <div className="relative flex min-h-screen flex-col">
+      {/* Cena 3D do mosteiro ao fundo (janelas, luz, vento, sino, incenso) */}
+      <MonasteryScene />
       <DustParticles count={32} />
 
       {/* Velas nos cantos (apenas telas grandes) */}
-      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      <div className="pointer-events-none fixed inset-0 z-[1] overflow-hidden">
         <CandleGlow className="left-4 top-24 hidden lg:block" size={50} />
         <CandleGlow className="right-4 top-24 hidden lg:block" size={50} />
         <CandleGlow className="bottom-4 left-1/2 hidden -translate-x-1/2 xl:block" size={44} />
       </div>
+
+      {/* Player de música ambient bardcore */}
+      <AmbientSound />
 
       {/* ===== HEADER ===== */}
       <header className="relative z-10 px-4 pb-8 pt-12 text-center md:pt-16">

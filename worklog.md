@@ -117,3 +117,47 @@ Stage Summary:
 - Erro de hidratação do <body> resolvido com suppressHydrationWarning (causa: extensão do navegador, não código da app).
 - DustParticles refatorado para useSyncExternalStore (compatível com React 19 strict hooks).
 - Console do navegador limpo; funcionalidade preservada.
+
+---
+Task ID: 4
+Agent: Z.ai Code (main)
+Task: Adicionar background 3D de mosteiro (luz e vento entrando por janelas medievais), música ambient bardcore de fundo e outros efeitos de ambiente.
+
+Work Log:
+- Adicionados keyframes e classes CSS em globals.css para a cena 3D: god-ray-sway (luz tremulando), window-glow (brilho dos vitrais), bell-sway (sino balançando), smoke-rise (fumaça de incenso em espiral), wind-gust (rajadas), star-twinkle (estrelas), cloud-drift (nuvens diante da lua), bird-fly (pássaros). Classes utilitárias: .monastery-scene (perspective), .monastery-layer (preserve-3d), .stone-floor, .wooden-ceiling, .stone-pillar.
+- Criado componente `src/components/monastery/monastery-scene.tsx` — cena 3D em camadas (CSS transforms + perspective, sem WebGL):
+  - Camada fundo (z=-400): céu noturno com gradiente, lua brilhante com halo, 40 estrelas cintilantes, nuvem passando diante da lua.
+  - Camada janelas (z=-250): 3 janelas arqueadas com moldura de pedra, vitral âmbar brilhante com bordas em chumbo (padrão diagonal) e cruz central.
+  - Camada god rays (z=-200): 3 raios de luz volumétrica diagonal descendo das janelas, com mixBlendMode screen, tremulando (animate-god-ray).
+  - Camada pilares (z=-120): 2 pilares de pedra laterais com capitéis.
+  - Camada campanário (z=-80): estrutura com sino dourado balançando (animate-bell-sway).
+  - Camada teto (z=-60): vigas de madeira em perspective rotateX.
+  - Camada chão (z=-30): pedra em perspective rotateX.
+  - Incensário pendurado com brasa brilhante e 5 partículas de fumaça subindo em espiral.
+  - 2 pássaros atravessando a cena ocasionalmente (animate-bird-fly).
+  - Vinheta global sutil para atmosfera.
+- Criado hook `src/hooks/use-client-only.ts` com useSyncExternalStore para gerar dados aleatórios (estrelas, fumaça) apenas no cliente, evitando mismatch de hidratação.
+- Criado componente `src/components/monastery/ambient-sound.tsx` — trilha ambient bardcore PROCEDURAL via Web Audio API (sem arquivos externos, 100% royalty-free):
+  - Drone de organum: 3 osciladores sine (D2 + A2 + D3) com detune leve e lowpass, evocando canto gregoriano.
+  - Sopro de vento: ruído branco filtrado (bandpass) com 2 LFOs modulando frequência (rajadas) e amplitude.
+  - Arpejos de harpa: osciladores triangle em escala dórica de Ré, com envelope ADSR e delay/feedback para eco, em intervalos aleatórios (1.8-4.4s).
+  - Sino de mosteiro: síntese FM (carrier sine + modulator na razão 2.76), a cada 18-40s.
+  - Master gain com fade in/out (2s / 0.6s) para evitar clicks.
+  - Botão flutuante (fixed bottom-right) com ícone Music/Music2, anel pulsante quando tocando, aria-pressed para acessibilidade.
+  - Inicia apenas após interação do usuário (política de autoplay dos browsers).
+  - Limpeza completa de osciladores/timers no unmount.
+- Integrado no page.tsx: MonasteryScene como background fixo (z-0), AmbientSound como botão flutuante (z-50), velas movidas para z-[1] para não conflitar.
+- Ajustes de visibilidade após primeira análise VLM: aumentado brilho das janelas (opacidade 0.92-0.98, boxShadow duplo), god rays mais intensos (0.6 + mixBlendMode screen), lua maior e mais brilhante (80px, halo 160px, boxShadow triplo), vinheta mais suave (0.25/0.5 ao invés de 0.35/0.6).
+- `bun run lint` passou sem erros.
+- Verificação com Agent Browser:
+  - Console 100% limpo (sem erros, warnings ou hydration mismatch).
+  - Cena 3D renderiza: VLM confirmou "três janelas góticas iluminadas (vitrais âmbar), god rays descendo, estrelas, velas, colunas laterais" e "conteúdo principal perfeitamente legível".
+  - Botão de música: toggle on/off/on testado — aria-pressed muda false→true→false→true, label muda "Tocar"→"Silenciar", sem erros de áudio no console.
+  - Funcionalidade principal preservada: adicionar livro → cai na mesa + toast.
+  - Responsivo: mobile (390px) e desktop (1440px) sem erros.
+
+Stage Summary:
+- Background 3D de mosteiro implementado em CSS 3D (camadas em perspectiva): janelas arqueadas com vitrais, god rays volumétricos, pilares, teto de vigas, chão de pedra, campanário com sino, incensário com fumaça, lua + estrelas + nuvens, pássaros.
+- Música ambient bardcore procedural (Web Audio API): drone organum + vento + harpa dórica + sino FM, com toggle mute/unmute.
+- Hook useClientOnly (useSyncExternalStore) resolve hydration mismatch de Math.random.
+- Artefatos novos: monastery-scene.tsx, ambient-sound.tsx, use-client-only.ts; atualizações em page.tsx e globals.css.
