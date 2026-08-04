@@ -97,3 +97,23 @@ Stage Summary:
 - Interação: clicar em lombada da estante ou tomo da mesa rola até o card detalhado e o destaca.
 - Bug de hidratação (Math.random no SSR) corrigido.
 - Artefatos novos: book-colors.ts, book-shelf.tsx, reading-desk.tsx; atualizações em page.tsx, tome-card.tsx, dust-particles.tsx, globals.css.
+
+---
+Task ID: 3
+Agent: Z.ai Code (main)
+Task: Corrigir erro de hidratação no <body> causado por extensão do navegador (atributos bis_status, bis_frame_id, __processed_* injetados antes do React hidratar).
+
+Work Log:
+- Diagnosticado o erro: o diff de hidratação mostrava atributos como `bis_status="ok"`, `bis_frame_id="766"`, `__processed_0b912ab0-...="true"` sendo adicionados ao <body> por uma extensão do navegador ANTES da hidratação do React. A própria mensagem do React indica essa causa: "It can also happen if the client has a browser extension installed which messes with the HTML before React loaded." Não era um bug do código da aplicação.
+- O <html> já tinha suppressHydrationWarning, mas o <body> não. Adicionado `suppressHydrationWarning` ao <body> em src/app/layout.tsx para silenciar divergências de atributos causadas por extensões.
+- O lint (React 19, regra react-hooks/set-state-in-effect) passou a acusar a correção anterior de hidratação do DustParticles (setState síncrono em useEffect). Refatorado dust-particles.tsx para usar `useSyncExternalStore` — a forma canônica de ler dados que diferem entre servidor e cliente sem mismatch de hidratação:
+  - Snapshot do servidor: lista vazia.
+  - Snapshot do cliente: partículas geradas com Math.random() (com cache por contagem).
+  - Subscribe vazio (dados estáticos após geração).
+- `bun run lint` passou sem erros.
+- Verificação com Agent Browser: página carrega, **console 100% limpo** (nenhum error/warning/hydration), e a cena visual (estante + mesa) continua renderizando corretamente (4 lombadas na estante + 1 tomo na mesa).
+
+Stage Summary:
+- Erro de hidratação do <body> resolvido com suppressHydrationWarning (causa: extensão do navegador, não código da app).
+- DustParticles refatorado para useSyncExternalStore (compatível com React 19 strict hooks).
+- Console do navegador limpo; funcionalidade preservada.

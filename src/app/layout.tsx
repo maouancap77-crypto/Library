@@ -59,6 +59,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`${cinzel.variable} ${garamond.variable} ${unifraktur.variable} antialiased bg-background text-foreground`}
       >
         {children}

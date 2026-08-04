@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
 
 interface DustParticlesProps {
   count?: number
@@ -21,30 +21,19 @@ interface Particle {
  * Partículas de poeira dourada flutuando lentamente para cima,
  * evocando o ar de uma biblioteca monástica iluminada por velas.
  *
- * As partículas são geradas apenas no cliente (após a montagem) para evitar
- * divergência entre o HTML renderizado no servidor e o do navegador, já que
- * os valores usam Math.random().
+ * Usa `useSyncExternalStore` para que as partículas (que dependem de
+ * Math.random()) só sejam geradas no cliente, evitando divergência entre
+ * o HTML renderizado no servidor e o do navegador (hydration mismatch).
+ * No SSR, retorna uma lista vazia; após a hidratação, retorna as partículas.
  */
-export function DustParticles({ count = 28, className = '' }: DustParticlesProps) {
-  const [particles, setParticles] = useState<Particle[]>([])
+const emptySubscribe = () => () => {}
 
-  useEffect(() => {
-    setParticles(
-      Array.from({ length: count }).map((_, i) => {
-        const size = 1 + Math.random() * 3
-        const duration = 18 + Math.random() * 22
-        return {
-          id: i,
-          size,
-          left: Math.random() * 100,
-          duration,
-          delay: Math.random() * -duration,
-          drift: (Math.random() - 0.5) * 120,
-          opacity: 0.2 + Math.random() * 0.4,
-        }
-      }),
-    )
-  }, [count])
+export function DustParticles({ count = 28, className = '' }: DustParticlesProps) {
+  const particles = useSyncExternalStore(
+    emptySubscribe,
+    () => generateParticles(count), // snapshot do cliente
+    () => EMPTY_PARTICLES, // snapshot do servidor
+  )
 
   return (
     <div
@@ -70,4 +59,28 @@ export function DustParticles({ count = 28, className = '' }: DustParticlesProps
       ))}
     </div>
   )
+}
+
+const EMPTY_PARTICLES: Particle[] = []
+
+// Cache por contagem para evitar regenerar a cada render.
+const cache = new Map<number, Particle[]>()
+
+function generateParticles(count: number): Particle[] {
+  const cached = cache.get(count)
+  if (cached) return cached
+  const list = Array.from({ length: count }).map((_, i) => {
+    const duration = 18 + Math.random() * 22
+    return {
+      id: i,
+      size: 1 + Math.random() * 3,
+      left: Math.random() * 100,
+      duration,
+      delay: Math.random() * -duration,
+      drift: (Math.random() - 0.5) * 120,
+      opacity: 0.2 + Math.random() * 0.4,
+    }
+  })
+  cache.set(count, list)
+  return list
 }
