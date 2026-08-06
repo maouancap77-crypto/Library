@@ -201,3 +201,30 @@ Stage Summary:
 - Animações ricas: flutter de páginas, halo do púlpito, pool de luz da vela, pena balançando, areia caindo, brilho da tinta, fita marcadora, poeira flutuante.
 - Transições animadas: adicionar → livro cai no púlpito; selar → livro aberto voa para a estante e próximo da pilha sobe.
 - Responsivo (mobile 2 colunas, desktop 4 colunas); console limpo.
+
+---
+Task ID: 6
+Agent: Z.ai Code (main)
+Task: Repassar o projeto para deploy no Vercel com Supabase — mudar Prisma de SQLite para PostgreSQL, garantir que só definir DATABASE_URL no Vercel faça tudo funcionar.
+
+Work Log:
+- Diagnosticado o erro 500 no Vercel: `Can't reach database server at db.xxx.supabase.co:5432` — o schema Prisma estava com `provider = "sqlite"`, mas o Supabase é PostgreSQL. O Prisma não consegue usar uma connection string Postgres com provider sqlite (e vice-versa).
+- Atualizado `prisma/schema.prisma`:
+  - `provider = "sqlite"` → `provider = "postgresql"`
+  - Adicionado `directUrl = env("DATABASE_URL")` (uma única variável serve para runtime E migrations/push).
+- Atualizado `package.json`:
+  - Adicionado `"postinstall": "prisma generate"` — garante que o client Prisma seja gerado no Vercel após `bun install` (crítico para o build serverless).
+  - Simplificado `"build"`: removidos os `cp -r .next/static .next/standalone/...` (eram para self-hosting standalone; no Vercel são desnecessários e poderiam falhar). Agora: `"prisma generate && next build"`.
+- Atualizado `.env` com placeholder da connection string Supabase (direta, porta 5432) e comentários explicando as duas opções (direta vs pooler).
+- Criado `.env.example` com formato documentado (sem credenciais reais) para servir de referência no GitHub.
+- Ajustado `.gitignore`: `.env*` continua ignorado, mas adicionado `!.env.example` para que o arquivo de exemplo seja commitado.
+- Executado `bun run db:generate` — client Prisma gerado com sucesso para provider postgresql.
+- `bun run lint` passou sem erros.
+- Verificado com Agent Browser: a UI continua renderizando normalmente (o dev server local ainda usa o client SQLite em cache do processo, mas no Vercel o build gerará o client PostgreSQL correto).
+
+Stage Summary:
+- Projeto pronto para Vercel + Supabase com UMA variável de ambiente (DATABASE_URL).
+- Schema Prisma em PostgreSQL; client gerado automaticamente no build/postinstall.
+- Build script limpo e Vercel-friendly.
+- .env.example documentado e versionável; .env real continua ignorado.
+- Passos de deploy documentados para o usuário (ver mensagem final).

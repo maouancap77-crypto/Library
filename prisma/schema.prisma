@@ -5,9 +5,13 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// Banco PostgreSQL (Supabase / Neon / Vercel Postgres / local Postgres).
+// Defina a variável de ambiente DATABASE_URL com a connection string do Supabase:
+//   postgresql://postgres:[SUA-SENHA]@db.[SEU-PROJECT-REF].supabase.co:5432/postgres
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL")
 }
 
 // Um tomo registrado na biblioteca monástica.
