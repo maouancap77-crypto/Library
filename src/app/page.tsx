@@ -27,6 +27,7 @@ import { BookShelf } from '@/components/monastery/book-shelf'
 import { ReadingDesk } from '@/components/monastery/reading-desk'
 import { MonasteryScene } from '@/components/monastery/monastery-scene'
 import { AmbientSound } from '@/components/monastery/ambient-sound'
+import { useClientOnly } from '@/hooks/use-client-only'
 import { formatMonthYear, MONTHS_SHORT } from '@/lib/dates'
 
 export default function Home() {
@@ -361,7 +362,10 @@ export default function Home() {
           Scriptorum custodita ad perpetuam — &ldquo;Que os escritos sejam
           guardados para sempre&rdquo;
         </p>
-        <p className="mt-2 font-display text-[0.65rem] uppercase tracking-[0.3em] text-gold/50">
+        <p
+          className="mt-2 font-display text-[0.65rem] uppercase tracking-[0.3em] text-gold/50"
+          suppressHydrationWarning
+        >
           Anno Domini {new Date().getFullYear()}
         </p>
       </footer>
@@ -534,6 +538,16 @@ function StatsPanel({
   stats: ReturnType<typeof useLibrary>['stats']
   loading: boolean
 }) {
+  // Ano/mês atuais computados apenas no cliente para evitar mismatch de
+  // hidratação em boundaries de ano/mês à meia-noite.
+  const now = useClientOnly(
+    'stats-now',
+    () => {
+      const d = new Date()
+      return { year: d.getFullYear(), month: d.getMonth() }
+    },
+    { year: 0, month: 0 },
+  )
   return (
     <motion.section
       initial={{ opacity: 0, y: 24 }}
@@ -567,13 +581,13 @@ function StatsPanel({
             />
             <WaxSeal
               value={stats.thisYear}
-              label={`Em ${new Date().getFullYear()}`}
+              label={now.year ? `Em ${now.year}` : 'Em …'}
               variant="crimson"
               delay={0.2}
             />
             <WaxSeal
               value={stats.thisMonth}
-              label={MONTHS_SHORT[new Date().getMonth()]}
+              label={now.month ? MONTHS_SHORT[now.month] : '—'}
               variant="wine"
               delay={0.3}
             />
@@ -592,16 +606,23 @@ function StatsPanel({
           </div>
 
           {/* Atividade mensal do ano */}
-          <MonthlyActivity activity={stats.monthlyActivity} />
+          <MonthlyActivity activity={stats.monthlyActivity} year={now.year} currentMonth={now.month} />
         </>
       )}
     </motion.section>
   )
 }
 
-function MonthlyActivity({ activity }: { activity: number[] }) {
+function MonthlyActivity({
+  activity,
+  year,
+  currentMonth,
+}: {
+  activity: number[]
+  year: number
+  currentMonth: number
+}) {
   const max = Math.max(1, ...activity)
-  const currentMonth = new Date().getMonth()
   const total = activity.reduce((a, b) => a + b, 0)
 
   if (total === 0) return null
@@ -611,7 +632,7 @@ function MonthlyActivity({ activity }: { activity: number[] }) {
       <div className="mb-3 flex items-center gap-2">
         <Hourglass className="h-3.5 w-3.5 text-gold/60" />
         <span className="font-display text-[0.65rem] uppercase tracking-[0.25em] text-gold/70">
-          Atividade de {new Date().getFullYear()}
+          {year ? `Atividade de ${year}` : 'Atividade do ano'}
         </span>
       </div>
       <div className="flex h-20 items-end justify-between gap-1">

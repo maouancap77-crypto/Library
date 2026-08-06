@@ -289,7 +289,10 @@ function PageLeftContent({ book }: { book: Book }) {
 }
 
 function PageRightContent({ book }: { book: Book }) {
-  const days = readingDuration(book.startedAt, new Date().toISOString())
+  // "Agora" gerado apenas no cliente para evitar mismatch de hidratação
+  // (servidor e cliente poderiam computar dias diferentes em boundary de timezone).
+  const now = useClientOnly('desk-now', () => new Date().toISOString(), book.startedAt)
+  const days = readingDuration(book.startedAt, now)
   return (
     <div className="flex h-full flex-col items-center justify-between text-center">
       <div>

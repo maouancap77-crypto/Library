@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Feather, Library, ScrollText } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -10,6 +10,7 @@ import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { OrnateDivider } from './ornate-divider'
 import { ParchmentCard } from './parchment-card'
+import { useClientOnly } from '@/hooks/use-client-only'
 import type { BookStatus } from '@/hooks/use-library'
 
 interface AddBookFormProps {
@@ -30,12 +31,22 @@ function todayISO(): string {
 }
 
 export function AddBookForm({ onAdd }: AddBookFormProps) {
+  // Data de hoje gerada apenas no cliente para evitar mismatch de hidratação
+  // (o servidor pode estar em timezone diferente do cliente).
+  const today = useClientOnly('add-book-today', todayISO, '')
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [finished, setFinished] = useState(false)
-  const [startedAt, setStartedAt] = useState(todayISO())
+  const [startedAt, setStartedAt] = useState('')
   const [notes, setNotes] = useState('')
   const [submitting, setSubmitting] = useState(false)
+
+  // Quando a data de hoje chega do cliente, preenche o campo se estiver vazio.
+  useEffect(() => {
+    if (today && !startedAt) {
+      setStartedAt(today)
+    }
+  }, [today, startedAt])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -46,14 +57,14 @@ export function AddBookForm({ onAdd }: AddBookFormProps) {
         title: title.trim(),
         author: author.trim() || undefined,
         status: finished ? 'finished' : 'reading',
-        startedAt: new Date(startedAt).toISOString(),
+        startedAt: new Date(startedAt || today).toISOString(),
         notes: notes.trim() || undefined,
       })
       setTitle('')
       setAuthor('')
       setNotes('')
       setFinished(false)
-      setStartedAt(todayISO())
+      setStartedAt(today)
     } finally {
       setSubmitting(false)
     }

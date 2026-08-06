@@ -1,0 +1,1838 @@
+     1→## Error Type
+     2→Console Error
+     3→
+     4→## Error Message
+     5→A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+     6→
+     7→- A server/client branch `if (typeof window !== 'undefined')`.
+     8→- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+     9→- Date formatting in a user's locale which doesn't match the server.
+    10→- External changing data without sending a snapshot of it along with the HTML.
+    11→- Invalid HTML tag nesting.
+    12→
+    13→It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+    14→
+    15→https://react.dev/link/hydration-mismatch
+    16→
+    17→  ...
+    18→    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+    19→      <AppDevOverlayErrorBoundary globalError={[...]}>
+    20→        <ReplaySsrOnlyErrors>
+    21→        <DevRootHTTPAccessFallbackBoundary>
+    22→          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+    23→            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+    24→              <RedirectBoundary>
+    25→                <RedirectErrorBoundary router={{...}}>
+    26→                  <Head headCacheNode={{rsc:<Fragment>, ...}}>
+    27→                    <__next_viewport_boundary__>
+    28→                    <MetadataWrapper>
+    29→                      <div
+    30→                        hidden={true}
+    31→-                       bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+    32→                      >
+    33→                    ...
+    34→                  ...
+    35→                    <body suppressHydrationWarning={true} className="cinzel_99e...">
+    36→                      ...
+    37→                        <SegmentViewNode type="page" pagePath="page.tsx">
+    38→                          <SegmentTrieNode>
+    39→                          <ClientPageRoot Component={function Home} serverProvidedParams={{...}}>
+    40→                            <Home params={Promise} searchParams={Promise}>
+    41→                              <div
+    42→                                className="relative flex min-h-screen flex-col"
+    43→-                               bis_size={"{\"x\":0,\"y\":0,\"w\":1215,\"h\":3258,\"abs_x\":671,\"abs_y\":124}"}
+    44→                              >
+    45→                                <MonasteryScene>
+    46→                                  <div
+    47→                                    aria-hidden="true"
+    48→                                    className="monastery-scene pointer-events-none fixed inset-0 z-0 overflow-hidden"
+    49→-                                   bis_size={"{\"x\":0,\"y\":0,\"w\":1215,\"h\":814,\"abs_x\":671,\"abs_y\":124}"}
+    50→                                  >
+    51→                                    <div
+    52→                                      className="monastery-layer"
+    53→                                      style={{transform:"translateZ..."}}
+    54→-                                     bis_size={"{\"x\":18,\"y\":0,\"w\":1177,\"h\":788,\"abs_x\":689,\"abs_y\":124}"}
+    55→                                    >
+    56→                                      <NightSky stars={[...]}>
+    57→                                        <div
+    58→                                          className="absolute inset-0"
+    59→-                                         bis_size={"{\"x\":18,\"y\":0,\"w\":1177,\"h\":788,\"abs_x\":689,\"abs_y\":124}"}
+    60→                                        >
+    61→                                          <div
+    62→                                            className="absolute inset-0"
+    63→                                            style={{background:"linear-gra..."}}
+    64→-                                           bis_size={"{\"x\":18,\"y\":0,\"w\":1177,\"h\":788,\"abs_x\":689,\"abs_y\"..."}
+    65→                                          >
+    66→                                          <div
+    67→                                            className="absolute"
+    68→                                            style={{top:"8%",right:"8%",width:80,height:80,borderRadius:"50%",background:"radial-gra...", ...}}
+    69→-                                           bis_size={"{\"x\":1024,\"y\":63,\"w\":77,\"h\":77,\"abs_x\":1695,\"abs_y\..."}
+    70→                                          >
+    71→                                          <div
+    72→                                            className="absolute"
+    73→                                            style={{top:"3%",right:"2%",width:160,height:160,borderRadius:"50%",background:"radial-gra..."}}
+    74→-                                           bis_size={"{\"x\":1017,\"y\":23,\"w\":155,\"h\":155,\"abs_x\":1688,\"abs_..."}
+    75→                                          >
+    76→                                          <div
+    77→                                            className="animate-cloud-drift absolute"
+    78→                                            style={{top:"14%",width:"40%",height:50,background:"radial-gra...",filter:"blur(8px)"}}
+    79→-                                           bis_size={"{\"x\":-98,\"y\":110,\"w\":471,\"h\":48,\"abs_x\":573,\"abs_y\..."}
+    80→                                          >
+    81→                                    <div
+    82→                                      className="monastery-layer"
+    83→                                      style={{transform:"translateZ..."}}
+    84→-                                     bis_size={"{\"x\":60,\"y\":31,\"w\":1093,\"h\":732,\"abs_x\":731,\"abs_y\":155}"}
+    85→                                    >
+    86→                                      <ArchedWindows>
+    87→                                        <div
+    88→                                          className="absolute inset-0 flex items-start justify-center gap-[6%] pt-[8%]"
+    89→-                                         bis_size={"{\"x\":60,\"y\":31,\"w\":1093,\"h\":732,\"abs_x\":731,\"abs_y\":..."}
+    90→                                        >
+    91→                                          <Window delay={0}>
+    92→                                            <div
+    93→                                              className="relative"
+    94→                                              style={{width:"min(18%, 2...",height:"min(42vh, ..."}}
+    95→-                                             bis_size={"{\"x\":246,\"y\":119,\"w\":196,\"h\":307,\"abs_x\":917,\"abs..."}
+    96→                                            >
+    97→                                              <div
+    98→                                                className="absolute inset-0"
+    99→                                                style={{background:"linear-gra...",borderRadius:"50% 50% 0 ...",boxShadow:"inse..."}}
+   100→-                                               bis_size={"{\"x\":246,\"y\":119,\"w\":196,\"h\":307,\"abs_x\":917,\"a..."}
+   101→                                              >
+   102→                                                <div
+   103→                                                  className="animate-window-glow absolute inset-[6px]"
+   104→                                                  style={{top:"12%",background:"linear-gra...",borderRadius:"50% 50% 0 ...", ...}}
+   105→-                                                 bis_size={"{\"x\":252,\"y\":156,\"w\":186,\"h\":265,\"abs_x\":923,\..."}
+   106→                                                >
+   107→                                                  <div
+   108→                                                    className="absolute inset-0"
+   109→                                                    style={{background:"repeating-...",borderRadius:"inherit",opacity:0.5}}
+   110→-                                                   bis_size={"{\"x\":252,\"y\":156,\"w\":186,\"h\":265,\"abs_x\":923..."}
+   111→                                                  >
+   112→                                                  <div
+   113→                                                    className="absolute left-1/2 top-1/2 h-[2px] w-[80%] -translate-x-..."
+   114→-                                                   bis_size={"{\"x\":270,\"y\":288,\"w\":148,\"h\":1,\"abs_x\":941,\..."}
+   115→                                                  >
+   116→                                                  <div
+   117→                                                    className="absolute left-1/2 top-1/2 h-[80%] w-[2px] -translate-x-..."
+   118→-                                                   bis_size={"{\"x\":344,\"y\":182,\"w\":1,\"h\":212,\"abs_x\":1015,..."}
+   119→                                                  >
+   120→                                          <Window delay={1.5}>
+   121→                                            <div
+   122→                                              className="relative"
+   123→                                              style={{width:"min(18%, 2...",height:"min(42vh, ..."}}
+   124→-                                             bis_size={"{\"x\":509,\"y\":119,\"w\":196,\"h\":307,\"abs_x\":1180,\"ab..."}
+   125→                                            >
+   126→                                              <div
+   127→                                                className="absolute inset-0"
+   128→                                                style={{background:"linear-gra...",borderRadius:"50% 50% 0 ...",boxShadow:"inse..."}}
+   129→-                                               bis_size={"{\"x\":509,\"y\":119,\"w\":196,\"h\":307,\"abs_x\":1180,\"..."}
+   130→                                              >
+   131→                                                <div
+   132→                                                  className="animate-window-glow absolute inset-[6px]"
+   133→                                                  style={{top:"12%",background:"linear-gra...",borderRadius:"50% 50% 0 ...", ...}}
+   134→-                                                 bis_size={"{\"x\":514,\"y\":156,\"w\":186,\"h\":265,\"abs_x\":1185,..."}
+   135→                                                >
+   136→                                                  <div
+   137→                                                    className="absolute inset-0"
+   138→                                                    style={{background:"repeating-...",borderRadius:"inherit",opacity:0.5}}
+   139→-                                                   bis_size={"{\"x\":514,\"y\":156,\"w\":186,\"h\":265,\"abs_x\":118..."}
+   140→                                                  >
+   141→                                                  <div
+   142→                                                    className="absolute left-1/2 top-1/2 h-[2px] w-[80%] -translate-x-..."
+   143→-                                                   bis_size={"{\"x\":533,\"y\":288,\"w\":148,\"h\":1,\"abs_x\":1204,..."}
+   144→                                                  >
+   145→                                                  <div
+   146→                                                    className="absolute left-1/2 top-1/2 h-[80%] w-[2px] -translate-x-..."
+   147→-                                                   bis_size={"{\"x\":606,\"y\":182,\"w\":1,\"h\":212,\"abs_x\":1277,..."}
+   148→                                                  >
+   149→                                          <Window delay={3}>
+   150→                                            <div
+   151→                                              className="relative"
+   152→                                              style={{width:"min(18%, 2...",height:"min(42vh, ..."}}
+   153→-                                             bis_size={"{\"x\":771,\"y\":119,\"w\":196,\"h\":307,\"abs_x\":1442,\"ab..."}
+   154→                                            >
+   155→                                              <div
+   156→                                                className="absolute inset-0"
+   157→                                                style={{background:"linear-gra...",borderRadius:"50% 50% 0 ...",boxShadow:"inse..."}}
+   158→-                                               bis_size={"{\"x\":771,\"y\":119,\"w\":196,\"h\":307,\"abs_x\":1442,\"..."}
+   159→                                              >
+   160→                                                <div
+   161→                                                  className="animate-window-glow absolute inset-[6px]"
+   162→                                                  style={{top:"12%",background:"linear-gra...",borderRadius:"50% 50% 0 ...", ...}}
+   163→-                                                 bis_size={"{\"x\":776,\"y\":156,\"w\":186,\"h\":265,\"abs_x\":1447,..."}
+   164→                                                >
+   165→                                                  <div
+   166→                                                    className="absolute inset-0"
+   167→                                                    style={{background:"repeating-...",borderRadius:"inherit",opacity:0.5}}
+   168→-                                                   bis_size={"{\"x\":776,\"y\":156,\"w\":186,\"h\":265,\"abs_x\":144..."}
+   169→                                                  >
+   170→                                                  <div
+   171→                                                    className="absolute left-1/2 top-1/2 h-[2px] w-[80%] -translate-x-..."
+   172→-                                                   bis_size={"{\"x\":795,\"y\":288,\"w\":148,\"h\":1,\"abs_x\":1466,..."}
+   173→                                                  >
+   174→                                                  <div
+   175→                                                    className="absolute left-1/2 top-1/2 h-[80%] w-[2px] -translate-x-..."
+   176→-                                                   bis_size={"{\"x\":869,\"y\":182,\"w\":1,\"h\":212,\"abs_x\":1540,..."}
+   177→                                                  >
+   178→                                    <div
+   179→                                      className="monastery-layer"
+   180→                                      style={{transform:"translateZ..."}}
+   181→-                                     bis_size={"{\"x\":60,\"y\":33,\"w\":1093,\"h\":732,\"abs_x\":731,\"abs_y\":157}"}
+   182→                                    >
+   183→                                      <GodRays>
+   184→                                        <div
+   185→                                          className="absolute inset-0 flex items-start justify-center gap-[6%] pt-[10%]"
+   186→-                                         bis_size={"{\"x\":60,\"y\":33,\"w\":1093,\"h\":732,\"abs_x\":731,\"abs_y\":..."}
+   187→                                        >
+   188→                                          <div
+   189→                                            className="animate-god-ray relative"
+   190→                                            style={{width:"min(16%, 2...",height:"min(75vh, ...",background:"linear-gra...", ...}}
+   191→-                                           bis_size={"{\"x\":277,\"y\":142,\"w\":177,\"h\":552,\"abs_x\":948,\"abs_y..."}
+   192→                                          >
+   193→                                          <div
+   194→                                            className="animate-god-ray relative"
+   195→                                            style={{width:"min(16%, 2...",height:"min(75vh, ...",background:"linear-gra...", ...}}
+   196→-                                           bis_size={"{\"x\":514,\"y\":141,\"w\":182,\"h\":562,\"abs_x\":1185,\"abs_..."}
+   197→                                          >
+   198→                                          <div
+   199→                                            className="animate-god-ray relative"
+   200→                                            style={{width:"min(16%, 2...",height:"min(75vh, ...",background:"linear-gra...", ...}}
+   201→-                                           bis_size={"{\"x\":759,\"y\":142,\"w\":175,\"h\":550,\"abs_x\":1430,\"abs_..."}
+   202→                                          >
+   203→                                    <div
+   204→                                      className="monastery-layer"
+   205→                                      style={{transform:"translateZ..."}}
+   206→-                                     bis_size={"{\"x\":71,\"y\":43,\"w\":1072,\"h\":718,\"abs_x\":742,\"abs_y\":167}"}
+   207→                                    >
+   208→                                      <Pillars>
+   209→                                        <div
+   210→                                          className="stone-pillar absolute"
+   211→                                          style={{left:0,top:0,bottom:0,width:"8%",transform:"translateZ..."}}
+   212→-                                         bis_size={"{\"x\":60,\"y\":36,\"w\":87,\"h\":732,\"abs_x\":731,\"abs_y\":160}"}
+   213→                                        >
+   214→                                        <div
+   215→                                          className="stone-pillar absolute"
+   216→                                          style={{right:0,top:0,bottom:0,width:"8%",transform:"translateZ..."}}
+   217→-                                         bis_size={"{\"x\":1066,\"y\":36,\"w\":87,\"h\":732,\"abs_x\":1737,\"abs_y\"..."}
+   218→                                        >
+   219→                                        <div
+   220→                                          className="absolute"
+   221→                                          style={{left:0,top:0,width:"10%",height:30,background:"linear-gra...",boxShadow:"0 4px 8px ..."}}
+   222→-                                         bis_size={"{\"x\":71,\"y\":43,\"w\":107,\"h\":26,\"abs_x\":742,\"abs_y\":167}"}
+   223→                                        >
+   224→                                        <div
+   225→                                          className="absolute"
+   226→                                          style={{right:0,top:0,width:"10%",height:30,background:"linear-gra...",boxShadow:"0 4px 8px ..."}}
+   227→-                                         bis_size={"{\"x\":1036,\"y\":43,\"w\":107,\"h\":26,\"abs_x\":1707,\"abs_y\"..."}
+   228→                                        >
+   229→                                    <div
+   230→                                      className="monastery-layer"
+   231→                                      style={{transform:"translateZ..."}}
+   232→-                                     bis_size={"{\"x\":49,\"y\":29,\"w\":1115,\"h\":747,\"abs_x\":720,\"abs_y\":153}"}
+   233→                                    >
+   234→                                      <BellTower>
+   235→                                        <div
+   236→                                          className="absolute"
+   237→                                          style={{top:"1%",left:"50%",transform:"translateX..."}}
+   238→-                                         bis_size={"{\"x\":566,\"y\":37,\"w\":82,\"h\":45,\"abs_x\":1237,\"abs_y\":161}"}
+   239→                                        >
+   240→                                          <div
+   241→                                            style={{width:90,height:50,background:"linear-gra...",border:"2px solid ...",borderRadius:"...", ...}}
+   242→-                                           bis_size={"{\"x\":566,\"y\":37,\"w\":82,\"h\":45,\"abs_x\":1237,\"abs_y\"..."}
+   243→                                          >
+   244→                                            <div
+   245→                                              className="animate-bell-sway"
+   246→                                              style={{position:"absolute",top:8,left:"50%",transform:"translateX...",transformOrigin:"t..."}}
+   247→-                                             bis_size={"{\"x\":606,\"y\":46,\"w\":21,\"h\":32,\"abs_x\":1277,\"abs_y..."}
+   248→                                            >
+   249→                                              <div
+   250→                                                style={{width:1,height:8,background:"oklch(0.4 ...",margin:"0 auto"}}
+   251→-                                               bis_size={"{\"x\":616,\"y\":46,\"w\":1,\"h\":7,\"abs_x\":1287,\"abs_y..."}
+   252→                                              >
+   253→                                              <div
+   254→                                                style={{width:22,height:26,background:"linear-gra...",borderRadius:"50% 50% 20...", ...}}
+   255→-                                               bis_size={"{\"x\":606,\"y\":53,\"w\":21,\"h\":24,\"abs_x\":1277,\"abs..."}
+   256→                                              >
+   257→                                    <div
+   258→                                      className="monastery-layer"
+   259→                                      style={{transform:"translateZ..."}}
+   260→-                                     bis_size={"{\"x\":37,\"y\":22,\"w\":1139,\"h\":763,\"abs_x\":708,\"abs_y\":146}"}
+   261→                                    >
+   262→                                      <Ceiling>
+   263→                                        <div
+   264→                                          className="wooden-ceiling absolute"
+   265→                                          style={{top:0,left:0,right:0,height:"22%",transform:"perspectiv...",transformOrigin:"bottom center", ...}}
+   266→-                                         bis_size={"{\"x\":-144,\"y\":-22,\"w\":1503,\"h\":213,\"abs_x\":527,\"abs_y..."}
+   267→                                        >
+   268→                                          <div
+   269→                                            className="absolute left-1/2 top-0 h-full w-3 -translate-x-1/2"
+   270→                                            style={{background:"linear-gra...",boxShadow:"0 0 12px o..."}}
+   271→-                                           bis_size={"{\"x\":598,\"y\":-22,\"w\":18,\"h\":213,\"abs_x\":1269,\"abs_y..."}
+   272→                                          >
+   273→                                    <div
+   274→                                      className="monastery-layer"
+   275→                                      style={{transform:"translateZ..."}}
+   276→-                                     bis_size={"{\"x\":19,\"y\":11,\"w\":1175,\"h\":787,\"abs_x\":690,\"abs_y\":135}"}
+   277→                                    >
+   278→                                      <Floor>
+   279→                                        <div
+   280→                                          className="stone-floor absolute"
+   281→                                          style={{bottom:0,left:0,right:0,height:"32%",transform:"perspectiv...",transformOrigin:"top center", ...}}
+   282→-                                         bis_size={"{\"x\":-388,\"y\":547,\"w\":1991,\"h\":399,\"abs_x\":283,\"abs_y..."}
+   283→                                        >
+   284→                                    <IncenseBurner>
+   285→                                      <div
+   286→                                        className="absolute"
+   287→                                        style={{bottom:"8%",left:"14%",transform:"translateZ..."}}
+   288→-                                       bis_size={"{\"x\":188,\"y\":709,\"w\":26,\"h\":22,\"abs_x\":859,\"abs_y\":833}"}
+   289→                                      >
+   290→                                        <div
+   291→                                          style={{position:"absolute",bottom:60,left:"50%",width:1,height:120,background:"oklch(0.3 ..."}}
+   292→-                                         bis_size={"{\"x\":202,\"y\":560,\"w\":0,\"h\":114,\"abs_x\":873,\"abs_y\":684}"}
+   293→                                        >
+   294→                                        <div
+   295→                                          style={{position:"relative",width:28,height:24,background:"linear-gra...",borderRadius:"40% 4...", ...}}
+   296→-                                         bis_size={"{\"x\":188,\"y\":709,\"w\":26,\"h\":22,\"abs_x\":859,\"abs_y\":833}"}
+   297→                                        >
+   298→                                          <div
+   299→                                            className="animate-candle-flicker"
+   300→                                            style={{position:"absolute",top:6,left:"50%",transform:"translateX...",width:8,height:4, ...}}
+   301→-                                           bis_size={"{\"x\":202,\"y\":715,\"w\":7,\"h\":3,\"abs_x\":873,\"abs_y\":839}"}
+   302→                                          >
+   303→                                          ...
+   304→                                    <Birds>
+   305→                                      <div
+   306→                                        className="animate-bird-fly absolute"
+   307→                                        style={{top:"20%",left:0}}
+   308→-                                       bis_size={"{\"x\":57,\"y\":157,\"w\":14,\"h\":7,\"abs_x\":728,\"abs_y\":281}"}
+   309→                                      >
+   310→                                        <BirdShape>
+   311→                                          <svg
+   312→                                            width="24"
+   313→                                            height="12"
+   314→                                            viewBox="0 0 24 12"
+   315→                                            fill="none"
+   316→                                            style={{transform:"scale(1)",opacity:0.7}}
+   317→-                                           bis_size={"{\"x\":57,\"y\":157,\"w\":14,\"h\":7,\"abs_x\":728,\"abs_y\":281}"}
+   318→                                          >
+   319→                                            <path
+   320→                                              d="M1 8 Q6 2 11 8 Q12 9 13 8 Q18 2 23 8"
+   321→                                              stroke="oklch(0.1 0.02 30)"
+   322→                                              strokeWidth="1.5"
+   323→                                              strokeLinecap="round"
+   324→                                              fill="none"
+   325→-                                             bis_size={"{\"x\":58,\"y\":160,\"w\":13,\"h\":2,\"abs_x\":729,\"abs_y\"..."}
+   326→                                            >
+   327→                                      <div
+   328→                                        className="animate-bird-fly absolute"
+   329→                                        style={{top:"28%",left:0,animationDelay:"12s"}}
+   330→-                                       bis_size={"{\"x\":0,\"y\":227,\"w\":24,\"h\":12,\"abs_x\":671,\"abs_y\":351}"}
+   331→                                      >
+   332→                                        <BirdShape small={true}>
+   333→                                          <svg
+   334→                                            width="24"
+   335→                                            height="12"
+   336→                                            viewBox="0 0 24 12"
+   337→                                            fill="none"
+   338→                                            style={{transform:"scale(0.5)",opacity:0.7}}
+   339→-                                           bis_size={"{\"x\":6,\"y\":230,\"w\":12,\"h\":6,\"abs_x\":677,\"abs_y\":354}"}
+   340→                                          >
+   341→                                            <path
+   342→                                              d="M1 8 Q6 2 11 8 Q12 9 13 8 Q18 2 23 8"
+   343→                                              stroke="oklch(0.1 0.02 30)"
+   344→                                              strokeWidth="1.5"
+   345→                                              strokeLinecap="round"
+   346→                                              fill="none"
+   347→-                                             bis_size={"{\"x\":6,\"y\":233,\"w\":11,\"h\":1,\"abs_x\":677,\"abs_y\":..."}
+   348→                                            >
+   349→                                    <div
+   350→                                      className="absolute inset-0"
+   351→                                      style={{background:"radial-gra..."}}
+   352→-                                     bis_size={"{\"x\":0,\"y\":0,\"w\":1215,\"h\":814,\"abs_x\":671,\"abs_y\":124}"}
+   353→                                    >
+   354→                                <DustParticles count={32}>
+   355→                                  <div
+   356→                                    aria-hidden="true"
+   357→                                    className={"pointer-events-none fixed inset-0 overflow-hidden "}
+   358→-                                   bis_size={"{\"x\":0,\"y\":0,\"w\":1215,\"h\":814,\"abs_x\":671,\"abs_y\":124}"}
+   359→                                  >
+   360→                                <div
+   361→                                  className="pointer-events-none fixed inset-0 z-[1] overflow-hidden"
+   362→-                                 bis_size={"{\"x\":0,\"y\":0,\"w\":1215,\"h\":814,\"abs_x\":671,\"abs_y\":124}"}
+   363→                                >
+   364→                                  <CandleGlow className="left-4 top..." size={50}>
+   365→                                    <div
+   366→                                      aria-hidden="true"
+   367→                                      className="pointer-events-none absolute left-4 top-24 hidden lg:block"
+   368→                                      style={{width:50,height:90}}
+   369→-                                     bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   370→                                    >
+   371→                                      <div
+   372→                                        className="animate-flame-glow absolute left-1/2 top-0 -translate-x-1/2 rounded..."
+   373→                                        style={{width:110.00000000000001,height:110.00000000000001,background:"radial-gra...",top:-30}}
+   374→-                                       bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   375→                                      >
+   376→                                      <div
+   377→                                        className="animate-candle-flicker absolute left-1/2 -translate-x-1/2"
+   378→                                        style={{top:2}}
+   379→-                                       bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   380→                                      >
+   381→                                        <div
+   382→                                          style={{width:11,height:25,background:"radial-gra...",borderRadius:"50% 50% 50...", ...}}
+   383→-                                         bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   384→                                        >
+   385→                                        <div
+   386→                                          style={{position:"absolute",left:"50%",top:"30%",transform:"translateX...",width:5,height:12.5, ...}}
+   387→-                                         bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   388→                                        >
+   389→                                      <div
+   390→                                        className="absolute left-1/2 -translate-x-1/2"
+   391→                                        style={{top:24,width:2,height:6,background:"oklch(0.15..."}}
+   392→-                                       bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   393→                                      >
+   394→                                      <div
+   395→                                        className="absolute left-1/2 -translate-x-1/2"
+   396→                                        style={{top:28.999999999999996,width:20,height:60,background:"linear-gra...",borderRadius:"4px ...", ...}}
+   397→-                                       bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   398→                                      >
+   399→                                        <div
+   400→                                          style={{position:"absolute",top:0,left:"20%",width:"15%",height:"25%",background:"linear-gra...", ...}}
+   401→-                                         bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   402→                                        >
+   403→                                  <CandleGlow className="right-4 to..." size={50}>
+   404→                                    <div
+   405→                                      aria-hidden="true"
+   406→                                      className="pointer-events-none absolute right-4 top-24 hidden lg:block"
+   407→                                      style={{width:50,height:90}}
+   408→-                                     bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   409→                                    >
+   410→                                      <div
+   411→                                        className="animate-flame-glow absolute left-1/2 top-0 -translate-x-1/2 rounded..."
+   412→                                        style={{width:110.00000000000001,height:110.00000000000001,background:"radial-gra...",top:-30}}
+   413→-                                       bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   414→                                      >
+   415→                                      <div
+   416→                                        className="animate-candle-flicker absolute left-1/2 -translate-x-1/2"
+   417→                                        style={{top:2}}
+   418→-                                       bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   419→                                      >
+   420→                                        <div
+   421→                                          style={{width:11,height:25,background:"radial-gra...",borderRadius:"50% 50% 50...", ...}}
+   422→-                                         bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   423→                                        >
+   424→                                        <div
+   425→                                          style={{position:"absolute",left:"50%",top:"30%",transform:"translateX...",width:5,height:12.5, ...}}
+   426→-                                         bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   427→                                        >
+   428→                                      <div
+   429→                                        className="absolute left-1/2 -translate-x-1/2"
+   430→                                        style={{top:24,width:2,height:6,background:"oklch(0.15..."}}
+   431→-                                       bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   432→                                      >
+   433→                                      <div
+   434→                                        className="absolute left-1/2 -translate-x-1/2"
+   435→                                        style={{top:28.999999999999996,width:20,height:60,background:"linear-gra...",borderRadius:"4px ...", ...}}
+   436→-                                       bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   437→                                      >
+   438→                                        <div
+   439→                                          style={{position:"absolute",top:0,left:"20%",width:"15%",height:"25%",background:"linear-gra...", ...}}
+   440→-                                         bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   441→                                        >
+   442→                                  <CandleGlow className="bottom-4 l..." size={44}>
+   443→                                    <div
+   444→                                      aria-hidden="true"
+   445→                                      className="pointer-events-none absolute bottom-4 left-1/2 hidden -translate-x-1/..."
+   446→                                      style={{width:44,height:79.2}}
+   447→-                                     bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   448→                                    >
+   449→                                      <div
+   450→                                        className="animate-flame-glow absolute left-1/2 top-0 -translate-x-1/2 rounded..."
+   451→                                        style={{width:96.80000000000001,height:96.80000000000001,background:"radial-gra...",top:-26.4}}
+   452→-                                       bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   453→                                      >
+   454→                                      <div
+   455→                                        className="animate-candle-flicker absolute left-1/2 -translate-x-1/2"
+   456→                                        style={{top:2}}
+   457→-                                       bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   458→                                      >
+   459→                                        <div
+   460→                                          style={{width:9.68,height:22,background:"radial-gra...",borderRadius:"50% 50% 50...", ...}}
+   461→-                                         bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   462→                                        >
+   463→                                        <div
+   464→                                          style={{position:"absolute",left:"50%",top:"30%",transform:"translateX...",width:4.4,height:11, ...}}
+   465→-                                         bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   466→                                        >
+   467→                                      <div
+   468→                                        className="absolute left-1/2 -translate-x-1/2"
+   469→                                        style={{top:21.119999999999997,width:2,height:5.279999999999999,background:"oklch(0.15..."}}
+   470→-                                       bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   471→                                      >
+   472→                                      <div
+   473→                                        className="absolute left-1/2 -translate-x-1/2"
+   474→                                        style={{top:25.52,width:17.6,height:52.8,background:"linear-gra...",borderRadius:"4px 4px 6p...", ...}}
+   475→-                                       bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   476→                                      >
+   477→                                        <div
+   478→                                          style={{position:"absolute",top:0,left:"20%",width:"15%",height:"25%",background:"linear-gra...", ...}}
+   479→-                                         bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   480→                                        >
+   481→                                <AmbientSound>
+   482→                                  <button
+   483→                                    type="button"
+   484→                                    onClick={function AmbientSound.useCallback[toggle]}
+   485→                                    disabled={false}
+   486→                                    aria-pressed={false}
+   487→                                    aria-label="Tocar música do mosteiro"
+   488→                                    title="Música ambient"
+   489→                                    className="group fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center justify-c..."
+   490→-                                   bis_size={"{\"x\":1125,\"y\":724,\"w\":60,\"h\":60,\"abs_x\":1796,\"abs_y\":848}"}
+   491→                                  >
+   492→                                    <Music className="h-5 w-5">
+   493→                                      <svg
+   494→                                        ref={null}
+   495→                                        xmlns="http://www.w3.org/2000/svg"
+   496→                                        width={24}
+   497→                                        height={24}
+   498→                                        viewBox="0 0 24 24"
+   499→                                        fill="none"
+   500→                                        stroke="currentColor"
+   501→                                        strokeWidth={2}
+   502→                                        strokeLinecap="round"
+   503→                                        strokeLinejoin="round"
+   504→                                        className="lucide lucide-music h-5 w-5"
+   505→                                        aria-hidden="true"
+   506→-                                       bis_size={"{\"x\":1142,\"y\":741,\"w\":25,\"h\":25,\"abs_x\":1813,\"abs_y\":865}"}
+   507→                                      >
+   508→                                        <path
+   509→                                          d="M9 18V5l12-2v13"
+   510→-                                         bis_size={"{\"x\":1151,\"y\":744,\"w\":12,\"h\":15,\"abs_x\":1822,\"abs_y\"..."}
+   511→                                        >
+   512→                                        <circle
+   513→                                          cx="6"
+   514→                                          cy="18"
+   515→                                          r="3"
+   516→-                                         bis_size={"{\"x\":1145,\"y\":757,\"w\":6,\"h\":6,\"abs_x\":1816,\"abs_y\":881}"}
+   517→                                        >
+   518→                                        <circle
+   519→                                          cx="18"
+   520→                                          cy="16"
+   521→                                          r="3"
+   522→-                                         bis_size={"{\"x\":1158,\"y\":755,\"w\":6,\"h\":6,\"abs_x\":1829,\"abs_y\":879}"}
+   523→                                        >
+   524→                                <header
+   525→                                  className="relative z-10 px-4 pb-8 pt-12 text-center md:pt-16"
+   526→-                                 bis_size={"{\"x\":0,\"y\":0,\"w\":1215,\"h\":559,\"abs_x\":671,\"abs_y\":124}"}
+   527→                                >
+   528→                                  <motion.div initial={{opacity:0,y:-20, ...}} animate={{opacity:1,y:0,scale:1}} ...>
+   529→                                    <div
+   530→                                      className="mx-auto mb-4 flex justify-center"
+   531→                                      style={{opacity:0,transform:"translateY..."}}
+   532→                                      ref={function useMotionRef.useCallback}
+   533→-                                     bis_size={"{\"x\":78,\"y\":67,\"w\":1057,\"h\":126,\"abs_x\":749,\"abs_y\":191}"}
+   534→                                    >
+   535→                                      <MonasteryEmblem className="h-24 w-24 ...">
+   536→                                        <svg
+   537→                                          viewBox="0 0 120 120"
+   538→                                          className="h-24 w-24 drop-shadow-[0_0_20px_oklch(0.6_0.12_60/0.4)] md:h-28 m..."
+   539→                                          role="img"
+   540→                                          aria-label="Emblema do Scriptorium"
+   541→-                                         bis_size={"{\"x\":544,\"y\":67,\"w\":126,\"h\":126,\"abs_x\":1215,\"abs_y\"..."}
+   542→                                        >
+   543→                                          <defs
+   544→-                                           bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   545→                                          >
+   546→                                            <radialGradient
+   547→                                              id="emblem-glow"
+   548→                                              cx="50%"
+   549→                                              cy="40%"
+   550→                                              r="60%"
+   551→-                                             bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   552→                                            >
+   553→                                              <stop
+   554→                                                offset="0%"
+   555→                                                stopColor="oklch(0.85 0.14 75)"
+   556→                                                stopOpacity="0.8"
+   557→-                                               bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   558→                                              >
+   559→                                              <stop
+   560→                                                offset="60%"
+   561→                                                stopColor="oklch(0.5 0.12 55)"
+   562→                                                stopOpacity="0.2"
+   563→-                                               bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   564→                                              >
+   565→                                              <stop
+   566→                                                offset="100%"
+   567→                                                stopColor="oklch(0.3 0.08 40)"
+   568→                                                stopOpacity="0"
+   569→-                                               bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   570→                                              >
+   571→                                            <linearGradient
+   572→                                              id="emblem-shield"
+   573→                                              x1="0%"
+   574→                                              y1="0%"
+   575→                                              x2="0%"
+   576→                                              y2="100%"
+   577→-                                             bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   578→                                            >
+   579→                                              <stop
+   580→                                                offset="0%"
+   581→                                                stopColor="oklch(0.5 0.1 55)"
+   582→-                                               bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   583→                                              >
+   584→                                              <stop
+   585→                                                offset="100%"
+   586→                                                stopColor="oklch(0.3 0.08 40)"
+   587→-                                               bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   588→                                              >
+   589→                                            <linearGradient
+   590→                                              id="emblem-gold"
+   591→                                              x1="0%"
+   592→                                              y1="0%"
+   593→                                              x2="0%"
+   594→                                              y2="100%"
+   595→-                                             bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   596→                                            >
+   597→                                              <stop
+   598→                                                offset="0%"
+   599→                                                stopColor="oklch(0.85 0.14 80)"
+   600→-                                               bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   601→                                              >
+   602→                                              <stop
+   603→                                                offset="100%"
+   604→                                                stopColor="oklch(0.6 0.12 70)"
+   605→-                                               bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+   606→                                              >
+   607→                                          <circle
+   608→                                            cx="60"
+   609→                                            cy="55"
+   610→                                            r="55"
+   611→                                            fill="url(#emblem-glow)"
+   612→                                            className="animate-gold-shimmer"
+   613→-                                           bis_size={"{\"x\":549,\"y\":67,\"w\":115,\"h\":115,\"abs_x\":1220,\"abs_y..."}
+   614→                                          >
+   615→                                          <g
+   616→                                            opacity="0.5"
+   617→                                            stroke="url(#emblem-gold)"
+   618→                                            strokeWidth="1"
+   619→                                            strokeLinecap="round"
+   620→-                                           bis_size={"{\"x\":558,\"y\":75,\"w\":98,\"h\":98,\"abs_x\":1229,\"abs_y\"..."}
+   621→                                          >
+   622→                                            <line
+   623→                                              x1="60"
+   624→                                              y1="8"
+   625→                                              x2="60"
+   626→                                              y2="18"
+   627→-                                             bis_size={"{\"x\":607,\"y\":75,\"w\":0,\"h\":10,\"abs_x\":1278,\"abs_y\..."}
+   628→                                            >
+   629→                                            <line
+   630→                                              x1="60"
+   631→                                              y1="92"
+   632→                                              x2="60"
+   633→                                              y2="102"
+   634→-                                             bis_size={"{\"x\":607,\"y\":163,\"w\":0,\"h\":10,\"abs_x\":1278,\"abs_y..."}
+   635→                                            >
+   636→                                            <line
+   637→                                              x1="13"
+   638→                                              y1="55"
+   639→                                              x2="23"
+   640→                                              y2="55"
+   641→-                                             bis_size={"{\"x\":558,\"y\":124,\"w\":10,\"h\":0,\"abs_x\":1229,\"abs_y..."}
+   642→                                            >
+   643→                                            <line
+   644→                                              x1="97"
+   645→                                              y1="55"
+   646→                                              x2="107"
+   647→                                              y2="55"
+   648→-                                             bis_size={"{\"x\":646,\"y\":124,\"w\":10,\"h\":0,\"abs_x\":1317,\"abs_y..."}
+   649→                                            >
+   650→                                            <line
+   651→                                              x1="26"
+   652→                                              y1="21"
+   653→                                              x2="33"
+   654→                                              y2="28"
+   655→-                                             bis_size={"{\"x\":571,\"y\":89,\"w\":7,\"h\":7,\"abs_x\":1242,\"abs_y\"..."}
+   656→                                            >
+   657→                                            <line
+   658→                                              x1="87"
+   659→                                              y1="82"
+   660→                                              x2="94"
+   661→                                              y2="89"
+   662→-                                             bis_size={"{\"x\":635,\"y\":153,\"w\":7,\"h\":7,\"abs_x\":1306,\"abs_y\..."}
+   663→                                            >
+   664→                                            <line
+   665→                                              x1="26"
+   666→                                              y1="89"
+   667→                                              x2="33"
+   668→                                              y2="82"
+   669→-                                             bis_size={"{\"x\":571,\"y\":153,\"w\":7,\"h\":7,\"abs_x\":1242,\"abs_y\..."}
+   670→                                            >
+   671→                                            <line
+   672→                                              x1="87"
+   673→                                              y1="28"
+   674→                                              x2="94"
+   675→                                              y2="21"
+   676→-                                             bis_size={"{\"x\":635,\"y\":89,\"w\":7,\"h\":7,\"abs_x\":1306,\"abs_y\"..."}
+   677→                                            >
+   678→                                          <path
+   679→                                            d="M60 20 L92 30 L92 60 Q92 85 60 100 Q28 85 28 60 L28 30 Z"
+   680→                                            fill="url(#emblem-shield)"
+   681→                                            stroke="url(#emblem-gold)"
+   682→                                            strokeWidth="2"
+   683→-                                           bis_size={"{\"x\":573,\"y\":88,\"w\":67,\"h\":84,\"abs_x\":1244,\"abs_y\"..."}
+   684→                                          >
+   685→                                          <g
+   686→                                            transform="translate(60 52)"
+   687→-                                           bis_size={"{\"x\":588,\"y\":112,\"w\":37,\"h\":17,\"abs_x\":1259,\"abs_y\..."}
+   688→                                          >
+   689→                                            <path
+   690→                                              d="M-18 -8 Q-9 -10 0 -6 L0 8 Q-9 4 -18 6 Z"
+   691→                                              fill="oklch(0.88 0.04 80)"
+   692→                                              stroke="oklch(0.55 0.1 70)"
+   693→                                              strokeWidth="0.8"
+   694→-                                             bis_size={"{\"x\":588,\"y\":112,\"w\":18,\"h\":17,\"abs_x\":1259,\"abs_..."}
+   695→                                            >
+   696→                                            <path
+   697→                                              d="M18 -8 Q9 -10 0 -6 L0 8 Q9 4 18 6 Z"
+   698→                                              fill="oklch(0.9 0.04 80)"
+   699→                                              stroke="oklch(0.55 0.1 70)"
+   700→                                              strokeWidth="0.8"
+   701→-                                             bis_size={"{\"x\":607,\"y\":112,\"w\":18,\"h\":17,\"abs_x\":1278,\"abs_..."}
+   702→                                            >
+   703→                                            <line
+   704→                                              x1="-14"
+   705→                                              y1="-4"
+   706→                                              x2="-4"
+   707→                                              y2="-2"
+   708→                                              stroke="oklch(0.4 0.05 50)"
+   709→                                              strokeWidth="0.5"
+   710→-                                             bis_size={"{\"x\":592,\"y\":117,\"w\":10,\"h\":2,\"abs_x\":1263,\"abs_y..."}
+   711→                                            >
+   712→                                            <line
+   713→                                              x1="-14"
+   714→                                              y1="0"
+   715→                                              x2="-4"
+   716→                                              y2="2"
+   717→                                              stroke="oklch(0.4 0.05 50)"
+   718→                                              strokeWidth="0.5"
+   719→-                                             bis_size={"{\"x\":592,\"y\":121,\"w\":10,\"h\":2,\"abs_x\":1263,\"abs_y..."}
+   720→                                            >
+   721→                                            <line
+   722→                                              x1="-14"
+   723→                                              y1="4"
+   724→                                              x2="-4"
+   725→                                              y2="6"
+   726→                                              stroke="oklch(0.4 0.05 50)"
+   727→                                              strokeWidth="0.5"
+   728→-                                             bis_size={"{\"x\":592,\"y\":125,\"w\":10,\"h\":2,\"abs_x\":1263,\"abs_y..."}
+   729→                                            >
+   730→                                            <line
+   731→                                              x1="4"
+   732→                                              y1="-2"
+   733→                                              x2="14"
+   734→                                              y2="-4"
+   735→                                              stroke="oklch(0.4 0.05 50)"
+   736→                                              strokeWidth="0.5"
+   737→-                                             bis_size={"{\"x\":611,\"y\":117,\"w\":10,\"h\":2,\"abs_x\":1282,\"abs_y..."}
+   738→                                            >
+   739→                                            <line
+   740→                                              x1="4"
+   741→                                              y1="2"
+   742→                                              x2="14"
+   743→                                              y2="0"
+   744→                                              stroke="oklch(0.4 0.05 50)"
+   745→                                              strokeWidth="0.5"
+   746→-                                             bis_size={"{\"x\":611,\"y\":121,\"w\":10,\"h\":2,\"abs_x\":1282,\"abs_y..."}
+   747→                                            >
+   748→                                            <line
+   749→                                              x1="4"
+   750→                                              y1="6"
+   751→                                              x2="14"
+   752→                                              y2="4"
+   753→                                              stroke="oklch(0.4 0.05 50)"
+   754→                                              strokeWidth="0.5"
+   755→-                                             bis_size={"{\"x\":611,\"y\":125,\"w\":10,\"h\":2,\"abs_x\":1282,\"abs_y..."}
+   756→                                            >
+   757→                                          <g
+   758→                                            transform="translate(60 30)"
+   759→-                                           bis_size={"{\"x\":602,\"y\":90,\"w\":10,\"h\":16,\"abs_x\":1273,\"abs_y\"..."}
+   760→                                          >
+   761→                                            <rect
+   762→                                              x="-1.5"
+   763→                                              y="-8"
+   764→                                              width="3"
+   765→                                              height="16"
+   766→                                              fill="url(#emblem-gold)"
+   767→                                              rx="0.5"
+   768→-                                             bis_size={"{\"x\":605,\"y\":90,\"w\":3,\"h\":16,\"abs_x\":1276,\"abs_y\..."}
+   769→                                            >
+   770→                                            <rect
+   771→                                              x="-5"
+   772→                                              y="-3"
+   773→                                              width="10"
+   774→                                              height="3"
+   775→                                              fill="url(#emblem-gold)"
+   776→                                              rx="0.5"
+   777→-                                             bis_size={"{\"x\":602,\"y\":95,\"w\":10,\"h\":3,\"abs_x\":1273,\"abs_y\..."}
+   778→                                            >
+   779→                                          <path
+   780→                                            d="M40 78 Q60 86 80 78"
+   781→                                            fill="none"
+   782→                                            stroke="url(#emblem-gold)"
+   783→                                            strokeWidth="1.2"
+   784→                                            strokeLinecap="round"
+   785→-                                           bis_size={"{\"x\":586,\"y\":148,\"w\":41,\"h\":4,\"abs_x\":1257,\"abs_y\"..."}
+   786→                                          >
+   787→                                          <circle
+   788→                                            cx="60"
+   789→                                            cy="78"
+   790→                                            r="1.5"
+   791→                                            fill="url(#emblem-gold)"
+   792→-                                           bis_size={"{\"x\":605,\"y\":147,\"w\":3,\"h\":3,\"abs_x\":1276,\"abs_y\":..."}
+   793→                                          >
+   794→                                  <motion.h1 initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} ...>
+   795→                                    <h1
+   796→                                      className="text-gold-glow font-gothic text-5xl leading-tight md:text-7xl"
+   797→                                      style={{fontFamily:"var(--font...",opacity:0,transform:"translateY..."}}
+   798→                                      ref={function useMotionRef.useCallback}
+   799→-                                     bis_size={"{\"x\":20,\"y\":256,\"w\":1175,\"h\":112,\"abs_x\":691,\"abs_y\":380}"}
+   800→                                    >
+   801→+                                     Scriptorium
+   802→                                  <motion.p initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.4, ...}} ...>
+   803→                                    <p
+   804→                                      className="mt-2 font-display text-xs uppercase tracking-[0.4em] text-gold/80 md:..."
+   805→                                      style={{opacity:0}}
+   806→                                      ref={function useMotionRef.useCallback}
+   807→-                                     bis_size={"{\"x\":20,\"y\":362,\"w\":1175,\"h\":25,\"abs_x\":691,\"abs_y\":486}"}
+   808→                                    >
+   809→+                                     Biblioteca Monástica
+   810→                                  <motion.p initial={{opacity:0, ...}} animate={{opacity:1}} ...>
+   811→                                    <p
+   812→                                      className="mx-auto mt-4 max-w-xl font-body text-sm italic text-parchment/60 md:t..."
+   813→                                      style={{opacity:0,fontStyle:"italic"}}
+   814→                                      ref={function useMotionRef.useCallback}
+   815→-                                     bis_size={"{\"x\":247,\"y\":407,\"w\":720,\"h\":60,\"abs_x\":918,\"abs_y\":531}"}
+   816→                                    >
+   817→+                                     “Lectio est oratio” — ler é rezar. Aqui jaz o registro de cada tomo que atravesso...
+   818→                                  <OrnateDivider className="mx-auto mt..." symbol="fleur">
+   819→                                    <div
+   820→                                      className="flex items-center justify-center gap-3 text-gold mx-auto mt-6 max-w-md"
+   821→                                      aria-hidden="true"
+   822→-                                     bis_size={"{\"x\":327,\"y\":497,\"w\":560,\"h\":22,\"abs_x\":998,\"abs_y\":621}"}
+   823→                                    >
+   824→                                      <div
+   825→                                        className="gold-divider h-px flex-1"
+   826→-                                       bis_size={"{\"x\":327,\"y\":508,\"w\":254,\"h\":1,\"abs_x\":998,\"abs_y\":632}"}
+   827→                                      >
+   828→                                      <div
+   829→                                        className="animate-gold-shimmer opacity-80"
+   830→-                                       bis_size={"{\"x\":596,\"y\":497,\"w\":22,\"h\":22,\"abs_x\":1267,\"abs_y\":621}"}
+   831→                                      >
+   832→                                        <DividerSymbol symbol="fleur">
+   833→                                          <svg
+   834→                                            width="22"
+   835→                                            height="22"
+   836→                                            viewBox="0 0 22 22"
+   837→                                            fill="none"
+   838→-                                           bis_size={"{\"x\":596,\"y\":497,\"w\":22,\"h\":22,\"abs_x\":1267,\"abs_y\..."}
+   839→                                          >
+   840→                                            <path
+   841→                                              d="M11 2c-1.5 2-1.5 4 0 6 1.5-2 1.5-4 0-6zM11 20c-1.5-2-1.5-4 0-6 1.5 2 ..."
+   842→                                              fill="currentColor"
+   843→-                                             bis_size={"{\"x\":598,\"y\":499,\"w\":18,\"h\":18,\"abs_x\":1269,\"abs_..."}
+   844→                                            >
+   845→                                            <circle
+   846→                                              cx="11"
+   847→                                              cy="11"
+   848→                                              r="1.5"
+   849→                                              fill="currentColor"
+   850→-                                             bis_size={"{\"x\":606,\"y\":507,\"w\":3,\"h\":3,\"abs_x\":1277,\"abs_y\..."}
+   851→                                            >
+   852→                                      <div
+   853→                                        className="gold-divider h-px flex-1"
+   854→-                                       bis_size={"{\"x\":633,\"y\":508,\"w\":254,\"h\":1,\"abs_x\":1304,\"abs_y\":632}"}
+   855→                                      >
+   856→                                <main
+   857→                                  className="relative z-10 mx-auto w-full max-w-5xl flex-1 px-4 pb-20"
+   858→-                                 bis_size={"{\"x\":0,\"y\":559,\"w\":1215,\"h\":2548,\"abs_x\":671,\"abs_y\":683}"}
+   859→                                >
+   860→                                  <ScriptoriumScene readingBooks={[...]} finishedBooks={[...]} loading={true} ...>
+   861→                                    <motion.section initial={{opacity:0,y:24}} animate={{opacity:1,y:0}} ...>
+   862→                                      <section
+   863→                                        className="mb-14 mt-10"
+   864→                                        style={{opacity:0,transform:"translateY..."}}
+   865→                                        ref={function useMotionRef.useCallback}
+   866→-                                       bis_size={"{\"x\":20,\"y\":633,\"w\":1175,\"h\":892,\"abs_x\":691,\"abs_y\":757}"}
+   867→                                      >
+   868→                                        <div
+   869→                                          className="mb-5 flex items-center gap-3"
+   870→-                                         bis_size={"{\"x\":20,\"y\":633,\"w\":1175,\"h\":25,\"abs_x\":691,\"abs_y\":..."}
+   871→                                        >
+   872→                                          <Library className="h-5 w-5 te...">
+   873→                                            <svg
+   874→                                              ref={null}
+   875→                                              xmlns="http://www.w3.org/2000/svg"
+   876→                                              width={24}
+   877→                                              height={24}
+   878→                                              viewBox="0 0 24 24"
+   879→                                              fill="none"
+   880→                                              stroke="currentColor"
+   881→                                              strokeWidth={2}
+   882→                                              strokeLinecap="round"
+   883→                                              strokeLinejoin="round"
+   884→                                              className="lucide lucide-library h-5 w-5 text-gold"
+   885→                                              aria-hidden="true"
+   886→-                                             bis_size={"{\"x\":20,\"y\":633,\"w\":25,\"h\":25,\"abs_x\":691,\"abs_y\..."}
+   887→                                            >
+   888→                                              <path
+   889→                                                d="m16 6 4 14"
+   890→-                                               bis_size={"{\"x\":36,\"y\":639,\"w\":4,\"h\":14,\"abs_x\":707,\"abs_y..."}
+   891→                                              >
+   892→                                              <path
+   893→                                                d="M12 6v14"
+   894→-                                               bis_size={"{\"x\":32,\"y\":639,\"w\":0,\"h\":14,\"abs_x\":703,\"abs_y..."}
+   895→                                              >
+   896→                                              <path
+   897→                                                d="M8 8v12"
+   898→-                                               bis_size={"{\"x\":28,\"y\":641,\"w\":0,\"h\":12,\"abs_x\":699,\"abs_y..."}
+   899→                                              >
+   900→                                              <path
+   901→                                                d="M4 4v16"
+   902→-                                               bis_size={"{\"x\":24,\"y\":637,\"w\":0,\"h\":16,\"abs_x\":695,\"abs_y..."}
+   903→                                              >
+   904→                                          <span
+   905→                                            className="font-display text-[0.65rem] uppercase tracking-[0.35em] text-go..."
+   906→-                                           bis_size={"{\"x\":60,\"y\":636,\"w\":147,\"h\":19,\"abs_x\":731,\"abs_y\"..."}
+   907→                                          >
+   908→+                                           O Scriptório
+   909→                                          <div
+   910→                                            className="gold-divider h-px flex-1"
+   911→-                                           bis_size={"{\"x\":222,\"y\":645,\"w\":972,\"h\":1,\"abs_x\":893,\"abs_y\"..."}
+   912→                                          >
+   913→                                        <div
+   914→                                          className="relative"
+   915→-                                         bis_size={"{\"x\":20,\"y\":683,\"w\":1175,\"h\":802,\"abs_x\":691,\"abs_y\"..."}
+   916→                                        >
+   917→                                          <BookShelf books={[...]} onSelect={function Home.useCallback[focusTome]}>
+   918→                                            <div
+   919→                                              className="bookshelf relative w-full overflow-hidden rounded-[var(--radi..."
+   920→-                                             bis_size={"{\"x\":20,\"y\":683,\"w\":1175,\"h\":375,\"abs_x\":691,\"abs..."}
+   921→                                            >
+   922→                                              <div
+   923→                                                className="shelf-cornice mb-1 h-3 w-full rounded-t"
+   924→-                                               bis_size={"{\"x\":42,\"y\":705,\"w\":1131,\"h\":15,\"abs_x\":713,\"ab..."}
+   925→                                              >
+   926→                                              <div
+   927→                                                className="flex flex-col gap-0"
+   928→-                                               bis_size={"{\"x\":42,\"y\":725,\"w\":1131,\"h\":311,\"abs_x\":713,\"a..."}
+   929→                                              >
+   930→                                                <Shelf books={[...]} onSelect={function Home.useCallback[focusTome]} ...>
+   931→                                                  <div
+   932→                                                    className="shelf relative"
+   933→-                                                   bis_size={"{\"x\":42,\"y\":725,\"w\":1131,\"h\":163,\"abs_x\":713..."}
+   934→                                                  >
+   935→                                                    <div
+   936→                                                      className="relative flex items-end gap-[3px] px-2"
+   937→                                                      style={{height:138,background:"linear-gra...",boxShadow:"inset 0 8p...", ...}}
+   938→-                                                     bis_size={"{\"x\":42,\"y\":725,\"w\":1131,\"h\":138,\"abs_x\":7..."}
+   939→                                                    >
+   940→                                                      <div
+   941→                                                        className="pointer-events-none absolute inset-0"
+   942→                                                        style={{background:"linear-gra..."}}
+   943→-                                                       bis_size={"{\"x\":42,\"y\":725,\"w\":1131,\"h\":136,\"abs_x\"..."}
+   944→                                                      >
+   945→                                                      <AnimatePresence>
+   946→                                                      <div
+   947→                                                        className="flex h-full w-full items-center justify-center"
+   948→-                                                       bis_size={"{\"x\":52,\"y\":725,\"w\":1111,\"h\":136,\"abs_x\"..."}
+   949→                                                      >
+   950→                                                        <span
+   951→                                                          className="font-body text-xs italic text-parchment/25"
+   952→-                                                         bis_size={"{\"x\":563,\"y\":783,\"w\":88,\"h\":19,\"abs_x\"..."}
+   953→                                                        >
+   954→+                                                         prateleira vazia
+   955→                                                    <div
+   956→                                                      className="shelf-board relative h-2 w-full"
+   957→                                                      style={{background:"linear-gra...",boxShadow:"0 3px 6px ..."}}
+   958→-                                                     bis_size={"{\"x\":42,\"y\":863,\"w\":1131,\"h\":10,\"abs_x\":71..."}
+   959→                                                    >
+   960→                                                      <div
+   961→                                                        className="absolute inset-0 opacity-40"
+   962→                                                        style={{background:"repeating-..."}}
+   963→-                                                       bis_size={"{\"x\":42,\"y\":863,\"w\":1131,\"h\":10,\"abs_x\":..."}
+   964→                                                      >
+   965→                                                    <div
+   966→                                                      className="h-3 w-full"
+   967→                                                      style={{background:"linear-gra..."}}
+   968→-                                                     bis_size={"{\"x\":42,\"y\":873,\"w\":1131,\"h\":15,\"abs_x\":71..."}
+   969→                                                    >
+   970→                                                <Shelf books={[...]} onSelect={function Home.useCallback[focusTome]} ...>
+   971→                                                  <div
+   972→                                                    className="shelf relative"
+   973→-                                                   bis_size={"{\"x\":42,\"y\":888,\"w\":1131,\"h\":148,\"abs_x\":713..."}
+   974→                                                  >
+   975→                                                    <div
+   976→                                                      className="relative flex items-end gap-[3px] px-2"
+   977→                                                      style={{height:138,background:"linear-gra...",boxShadow:"inset 0 8p...", ...}}
+   978→-                                                     bis_size={"{\"x\":42,\"y\":888,\"w\":1131,\"h\":138,\"abs_x\":7..."}
+   979→                                                    >
+   980→                                                      <div
+   981→                                                        className="pointer-events-none absolute inset-0"
+   982→                                                        style={{background:"linear-gra..."}}
+   983→-                                                       bis_size={"{\"x\":42,\"y\":888,\"w\":1131,\"h\":136,\"abs_x\"..."}
+   984→                                                      >
+   985→                                                      <AnimatePresence>
+   986→                                                      <div
+   987→                                                        className="flex h-full w-full items-center justify-center"
+   988→-                                                       bis_size={"{\"x\":52,\"y\":888,\"w\":1111,\"h\":136,\"abs_x\"..."}
+   989→                                                      >
+   990→                                                        <span
+   991→                                                          className="font-body text-xs italic text-parchment/25"
+   992→-                                                         bis_size={"{\"x\":563,\"y\":946,\"w\":88,\"h\":19,\"abs_x\"..."}
+   993→                                                        >
+   994→+                                                         prateleira vazia
+   995→                                                    <div
+   996→                                                      className="shelf-board relative h-2 w-full"
+   997→                                                      style={{background:"linear-gra...",boxShadow:"0 3px 6px ..."}}
+   998→-                                                     bis_size={"{\"x\":42,\"y\":1026,\"w\":1131,\"h\":10,\"abs_x\":7..."}
+   999→                                                    >
+  1000→                                                      <div
+  1001→                                                        className="absolute inset-0 opacity-40"
+  1002→                                                        style={{background:"repeating-..."}}
+  1003→-                                                       bis_size={"{\"x\":42,\"y\":1026,\"w\":1131,\"h\":10,\"abs_x\"..."}
+  1004→                                                      >
+  1005→                                          <motion.div initial={{opacity:0,y:30, ...}} animate={{opacity:1,y:0,scale:1}} ...>
+  1006→                                            <div
+  1007→                                              className="relative z-10 mx-auto mt-8 max-w-3xl"
+  1008→                                              style={{opacity:0,transform:"translateY..."}}
+  1009→                                              ref={function useMotionRef.useCallback}
+  1010→-                                             bis_size={"{\"x\":151,\"y\":1138,\"w\":912,\"h\":368,\"abs_x\":822,\"ab..."}
+  1011→                                            >
+  1012→                                              <div
+  1013→                                                className="relative overflow-hidden rounded-[var(--radius)] border bor..."
+  1014→                                                style={{background:"radial-gra...",boxShadow:"inset 0 0 ..."}}
+  1015→-                                               bis_size={"{\"x\":151,\"y\":1138,\"w\":912,\"h\":368,\"abs_x\":822,\"..."}
+  1016→                                              >
+  1017→                                                <div
+  1018→                                                  className="mb-4 flex flex-col items-center gap-1 text-center"
+  1019→-                                                 bis_size={"{\"x\":190,\"y\":1177,\"w\":834,\"h\":43,\"abs_x\":861,\..."}
+  1020→                                                >
+  1021→                                                  <div
+  1022→                                                    className="flex items-center gap-2"
+  1023→-                                                   bis_size={"{\"x\":490,\"y\":1177,\"w\":233,\"h\":19,\"abs_x\":116..."}
+  1024→                                                  >
+  1025→                                                    <BookOpen className="h-4 w-4 te...">
+  1026→                                                      <svg
+  1027→                                                        ref={null}
+  1028→                                                        xmlns="http://www.w3.org/2000/svg"
+  1029→                                                        width={24}
+  1030→                                                        height={24}
+  1031→                                                        viewBox="0 0 24 24"
+  1032→                                                        fill="none"
+  1033→                                                        stroke="currentColor"
+  1034→                                                        strokeWidth={2}
+  1035→                                                        strokeLinecap="round"
+  1036→                                                        strokeLinejoin="round"
+  1037→                                                        className="lucide lucide-book-open h-4 w-4 text-gold/70"
+  1038→                                                        aria-hidden="true"
+  1039→-                                                       bis_size={"{\"x\":490,\"y\":1177,\"w\":19,\"h\":19,\"abs_x\":..."}
+  1040→                                                      >
+  1041→                                                        <path
+  1042→                                                          d="M12 7v14"
+  1043→-                                                         bis_size={"{\"x\":500,\"y\":1183,\"w\":0,\"h\":11,\"abs_x\"..."}
+  1044→                                                        >
+  1045→                                                        <path
+  1046→                                                          d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0..."
+  1047→-                                                         bis_size={"{\"x\":492,\"y\":1179,\"w\":15,\"h\":14,\"abs_x\..."}
+  1048→                                                        >
+  1049→                                                    <span
+  1050→                                                      className="font-display text-[0.7rem] uppercase tracking-[0.35em..."
+  1051→-                                                     bis_size={"{\"x\":519,\"y\":1177,\"w\":176,\"h\":19,\"abs_x\":1..."}
+  1052→                                                    >
+  1053→+                                                     Mesa do Leitor
+  1054→                                                    <BookOpen className="h-4 w-4 -s...">
+  1055→                                                      <svg
+  1056→                                                        ref={null}
+  1057→                                                        xmlns="http://www.w3.org/2000/svg"
+  1058→                                                        width={24}
+  1059→                                                        height={24}
+  1060→                                                        viewBox="0 0 24 24"
+  1061→                                                        fill="none"
+  1062→                                                        stroke="currentColor"
+  1063→                                                        strokeWidth={2}
+  1064→                                                        strokeLinecap="round"
+  1065→                                                        strokeLinejoin="round"
+  1066→                                                        className="lucide lucide-book-open h-4 w-4 -scale-x-100 text-g..."
+  1067→                                                        aria-hidden="true"
+  1068→-                                                       bis_size={"{\"x\":705,\"y\":1177,\"w\":19,\"h\":19,\"abs_x\":..."}
+  1069→                                                      >
+  1070→                                                        <path
+  1071→                                                          d="M12 7v14"
+  1072→-                                                         bis_size={"{\"x\":714,\"y\":1183,\"w\":0,\"h\":11,\"abs_x\"..."}
+  1073→                                                        >
+  1074→                                                        <path
+  1075→                                                          d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0..."
+  1076→-                                                         bis_size={"{\"x\":706,\"y\":1179,\"w\":15,\"h\":14,\"abs_x\..."}
+  1077→                                                        >
+  1078→                                                  <p
+  1079→                                                    className="font-body text-xs italic text-parchment/45"
+  1080→-                                                   bis_size={"{\"x\":414,\"y\":1201,\"w\":386,\"h\":18,\"abs_x\":108..."}
+  1081→                                                  >
+  1082→+                                                   O tomo aberto no púlpito é a leitura ativa; os demais aguardam na p...
+  1083→                                                <div
+  1084→                                                  className="flex h-48 items-center justify-center gap-3"
+  1085→-                                                 bis_size={"{\"x\":190,\"y\":1239,\"w\":834,\"h\":228,\"abs_x\":861,..."}
+  1086→                                                >
+  1087→                                                  <LoaderCircle className="h-5 w-5 an...">
+  1088→                                                    <svg
+  1089→                                                      ref={null}
+  1090→                                                      xmlns="http://www.w3.org/2000/svg"
+  1091→                                                      width={24}
+  1092→                                                      height={24}
+  1093→                                                      viewBox="0 0 24 24"
+  1094→                                                      fill="none"
+  1095→                                                      stroke="currentColor"
+  1096→                                                      strokeWidth={2}
+  1097→                                                      strokeLinecap="round"
+  1098→                                                      strokeLinejoin="round"
+  1099→                                                      className="lucide lucide-loader-circle h-5 w-5 animate-spin text..."
+  1100→                                                      aria-hidden="true"
+  1101→-                                                     bis_size={"{\"x\":482,\"y\":1337,\"w\":33,\"h\":33,\"abs_x\":11..."}
+  1102→                                                    >
+  1103→                                                      <path
+  1104→                                                        d="M21 12a9 9 0 1 1-6.219-8.56"
+  1105→-                                                       bis_size={"{\"x\":486,\"y\":1341,\"w\":25,\"h\":25,\"abs_x\":..."}
+  1106→                                                      >
+  1107→                                                  <span
+  1108→                                                    className="font-body text-sm italic text-parchment/60"
+  1109→-                                                   bis_size={"{\"x\":525,\"y\":1341,\"w\":202,\"h\":23,\"abs_x\":119..."}
+  1110→                                                  >
+  1111→+                                                   Dispondo os tomos sobre a mesa...
+  1112→                                          <div
+  1113→                                            className="pointer-events-none absolute -top-4 left-1/2 z-20 hidden h-32 w..."
+  1114→                                            style={{background:"radial-gra..."}}
+  1115→-                                           bis_size={"{\"x\":0,\"y\":0,\"w\":0,\"h\":0,\"abs_x\":671,\"abs_y\":124}"}
+  1116→                                          >
+  1117→                                        <p
+  1118→                                          className="mt-4 text-center font-body text-xs italic text-parchment/40"
+  1119→-                                         bis_size={"{\"x\":20,\"y\":1506,\"w\":1175,\"h\":19,\"abs_x\":691,\"abs_y\"..."}
+  1120→                                        >
+  1121→+                                         Clique no livro aberto, numa lombada da estante ou num tomo da pilha para loc...
+  1122→                                  <StatsPanel stats={null} loading={true}>
+  1123→                                    <motion.section initial={{opacity:0,y:24}} animate={{opacity:1,y:0}} ...>
+  1124→                                      <section
+  1125→                                        className="wood-panel relative overflow-hidden rounded-[var(--radius)] p-6 md:p-8"
+  1126→                                        style={{opacity:0,transform:"translateY..."}}
+  1127→                                        ref={function useMotionRef.useCallback}
+  1128→-                                       bis_size={"{\"x\":20,\"y\":1596,\"w\":1175,\"h\":247,\"abs_x\":691,\"abs_y\":..."}
+  1129→                                      >
+  1130→                                        <div
+  1131→                                          className="mb-6 flex items-center gap-3"
+  1132→-                                         bis_size={"{\"x\":61,\"y\":1637,\"w\":1093,\"h\":30,\"abs_x\":732,\"abs_y\"..."}
+  1133→                                        >
+  1134→                                          <Sparkles className="h-5 w-5 te...">
+  1135→                                            <svg
+  1136→                                              ref={null}
+  1137→                                              xmlns="http://www.w3.org/2000/svg"
+  1138→                                              width={24}
+  1139→                                              height={24}
+  1140→                                              viewBox="0 0 24 24"
+  1141→                                              fill="none"
+  1142→                                              stroke="currentColor"
+  1143→                                              strokeWidth={2}
+  1144→                                              strokeLinecap="round"
+  1145→                                              strokeLinejoin="round"
+  1146→                                              className="lucide lucide-sparkles h-5 w-5 text-gold"
+  1147→                                              aria-hidden="true"
+  1148→-                                             bis_size={"{\"x\":61,\"y\":1639,\"w\":25,\"h\":25,\"abs_x\":732,\"abs_y..."}
+  1149→                                            >
+  1150→                                              <path
+  1151→                                                d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5..."
+  1152→-                                               bis_size={"{\"x\":63,\"y\":1642,\"w\":20,\"h\":20,\"abs_x\":734,\"abs..."}
+  1153→                                              >
+  1154→                                              <path
+  1155→                                                d="M20 3v4"
+  1156→-                                               bis_size={"{\"x\":81,\"y\":1643,\"w\":0,\"h\":4,\"abs_x\":752,\"abs_y..."}
+  1157→                                              >
+  1158→                                              <path
+  1159→                                                d="M22 5h-4"
+  1160→-                                               bis_size={"{\"x\":79,\"y\":1645,\"w\":4,\"h\":0,\"abs_x\":750,\"abs_y..."}
+  1161→                                              >
+  1162→                                              <path
+  1163→                                                d="M4 17v2"
+  1164→-                                               bis_size={"{\"x\":65,\"y\":1657,\"w\":0,\"h\":2,\"abs_x\":736,\"abs_y..."}
+  1165→                                              >
+  1166→                                              <path
+  1167→                                                d="M5 18H3"
+  1168→-                                               bis_size={"{\"x\":64,\"y\":1658,\"w\":2,\"h\":0,\"abs_x\":735,\"abs_y..."}
+  1169→                                              >
+  1170→                                          <h2
+  1171→                                            className="font-display text-sm uppercase tracking-[0.3em] text-gold/80 md..."
+  1172→-                                           bis_size={"{\"x\":101,\"y\":1637,\"w\":312,\"h\":30,\"abs_x\":772,\"abs_y..."}
+  1173→                                          >
+  1174→+                                           Crônica do Leitor
+  1175→                                          <div
+  1176→                                            className="gold-divider h-px flex-1"
+  1177→-                                           bis_size={"{\"x\":428,\"y\":1651,\"w\":725,\"h\":1,\"abs_x\":1099,\"abs_y..."}
+  1178→                                          >
+  1179→                                        <div
+  1180→                                          className="flex items-center justify-center gap-3 py-8"
+  1181→-                                         bis_size={"{\"x\":61,\"y\":1697,\"w\":1093,\"h\":105,\"abs_x\":732,\"abs_y\..."}
+  1182→                                        >
+  1183→                                          <LoaderCircle className="h-5 w-5 an...">
+  1184→                                            <svg
+  1185→                                              ref={null}
+  1186→                                              xmlns="http://www.w3.org/2000/svg"
+  1187→                                              width={24}
+  1188→                                              height={24}
+  1189→                                              viewBox="0 0 24 24"
+  1190→                                              fill="none"
+  1191→                                              stroke="currentColor"
+  1192→                                              strokeWidth={2}
+  1193→                                              strokeLinecap="round"
+  1194→                                              strokeLinejoin="round"
+  1195→                                              className="lucide lucide-loader-circle h-5 w-5 animate-spin text-gold"
+  1196→                                              aria-hidden="true"
+  1197→-                                             bis_size={"{\"x\":484,\"y\":1732,\"w\":35,\"h\":35,\"abs_x\":1155,\"abs..."}
+  1198→                                            >
+  1199→                                              <path
+  1200→                                                d="M21 12a9 9 0 1 1-6.219-8.56"
+  1201→-                                               bis_size={"{\"x\":489,\"y\":1736,\"w\":26,\"h\":26,\"abs_x\":1160,\"a..."}
+  1202→                                              >
+  1203→                                          <span
+  1204→                                            className="font-body text-sm italic text-parchment/60"
+  1205→-                                           bis_size={"{\"x\":530,\"y\":1737,\"w\":194,\"h\":25,\"abs_x\":1201,\"abs_..."}
+  1206→                                          >
+  1207→+                                           Compilando os pergaminhos...
+  1208→                                  <motion.section initial={{opacity:0,y:30}} whileInView={{opacity:1,y:0}} ...>
+  1209→                                    <section
+  1210→                                      className="mb-14 mt-12"
+  1211→                                      style={{opacity:0,transform:"translateY..."}}
+  1212→                                      ref={function useMotionRef.useCallback}
+  1213→-                                     bis_size={"{\"x\":20,\"y\":1909,\"w\":1175,\"h\":571,\"abs_x\":691,\"abs_y\":2033}"}
+  1214→                                    >
+  1215→                                      <AddBookForm onAdd={function handleAdd}>
+  1216→                                        <ParchmentCard className="relative">
+  1217→                                          <motion.div initial={{opacity:0,y:20, ...}} animate={{opacity:1,y:0,scaleY:1}} ...>
+  1218→                                            <div
+  1219→                                              className="parchment relative rounded-[var(--radius)] p-5 md:p-7 relative"
+  1220→                                              style={{opacity:0,transform:"translateY..."}}
+  1221→                                              ref={function useMotionRef.useCallback}
+  1222→-                                             bis_size={"{\"x\":20,\"y\":1943,\"w\":1175,\"h\":542,\"abs_x\":691,\"ab..."}
+  1223→                                            >
+  1224→                                              <span
+  1225→                                                className="pointer-events-none absolute -left-1 -top-1 h-3 w-3 rounded..."
+  1226→-                                               bis_size={"{\"x\":16,\"y\":1939,\"w\":15,\"h\":14,\"abs_x\":687,\"abs..."}
+  1227→                                              >
+  1228→                                              <span
+  1229→                                                className="pointer-events-none absolute -right-1 -top-1 h-3 w-3 rounde..."
+  1230→-                                               bis_size={"{\"x\":1184,\"y\":1939,\"w\":15,\"h\":14,\"abs_x\":1855,\"..."}
+  1231→                                              >
+  1232→                                              <span
+  1233→                                                className="pointer-events-none absolute -bottom-1 -left-1 h-3 w-3 roun..."
+  1234→-                                               bis_size={"{\"x\":16,\"y\":2476,\"w\":15,\"h\":14,\"abs_x\":687,\"abs..."}
+  1235→                                              >
+  1236→                                              <span
+  1237→                                                className="pointer-events-none absolute -bottom-1 -right-1 h-3 w-3 rou..."
+  1238→-                                               bis_size={"{\"x\":1184,\"y\":2476,\"w\":15,\"h\":14,\"abs_x\":1855,\"..."}
+  1239→                                              >
+  1240→                                              <div
+  1241→                                                className="mb-4 flex items-center gap-3"
+  1242→-                                               bis_size={"{\"x\":56,\"y\":1977,\"w\":1103,\"h\":37,\"abs_x\":727,\"a..."}
+  1243→                                              >
+  1244→                                                <Feather className="h-5 w-5 te...">
+  1245→                                                  <svg
+  1246→                                                    ref={null}
+  1247→                                                    xmlns="http://www.w3.org/2000/svg"
+  1248→                                                    width={24}
+  1249→                                                    height={24}
+  1250→                                                    viewBox="0 0 24 24"
+  1251→                                                    fill="none"
+  1252→                                                    stroke="currentColor"
+  1253→                                                    strokeWidth={2}
+  1254→                                                    strokeLinecap="round"
+  1255→                                                    strokeLinejoin="round"
+  1256→                                                    className="lucide lucide-feather h-5 w-5 text-wax"
+  1257→                                                    aria-hidden="true"
+  1258→-                                                   bis_size={"{\"x\":56,\"y\":1985,\"w\":25,\"h\":23,\"abs_x\":727,\..."}
+  1259→                                                  >
+  1260→                                                    <path
+  1261→                                                      d="M12.67 19a2 2 0 0 0 1.416-.588l6.154-6.172a6 6 0 0 0-8.49-8.4..."
+  1262→-                                                     bis_size={"{\"x\":61,\"y\":1987,\"w\":17,\"h\":16,\"abs_x\":732..."}
+  1263→                                                    >
+  1264→                                                    <path
+  1265→                                                      d="M16 8 2 22"
+  1266→-                                                     bis_size={"{\"x\":58,\"y\":1992,\"w\":14,\"h\":13,\"abs_x\":729..."}
+  1267→                                                    >
+  1268→                                                    <path
+  1269→                                                      d="M17.5 15H9"
+  1270→-                                                     bis_size={"{\"x\":65,\"y\":1999,\"w\":8,\"h\":0,\"abs_x\":736,\..."}
+  1271→                                                    >
+  1272→                                                <h2
+  1273→                                                  className="font-display text-xl font-semibold text-[var(--ink)] md:t..."
+  1274→-                                                 bis_size={"{\"x\":96,\"y\":1977,\"w\":356,\"h\":37,\"abs_x\":767,\"..."}
+  1275→                                                >
+  1276→+                                                 Registrar Novo Tomo
+  1277→                                              <p
+  1278→                                                className="mb-4 font-body text-sm italic text-[var(--ink)]/60"
+  1279→-                                               bis_size={"{\"x\":56,\"y\":2034,\"w\":1103,\"h\":23,\"abs_x\":727,\"a..."}
+  1280→                                              >
+  1281→+                                               “Todo livro lido é uma alma resgatada do esquecimento.”
+  1282→                                              <OrnateDivider className="mb-5 text-...">
+  1283→                                                <div
+  1284→                                                  className="flex items-center justify-center gap-3 text-gold mb-5 tex..."
+  1285→                                                  aria-hidden="true"
+  1286→-                                                 bis_size={"{\"x\":56,\"y\":2077,\"w\":1103,\"h\":20,\"abs_x\":727,\..."}
+  1287→                                                >
+  1288→                                                  <div
+  1289→                                                    className="gold-divider h-px flex-1"
+  1290→-                                                   bis_size={"{\"x\":56,\"y\":2087,\"w\":525,\"h\":0,\"abs_x\":727,\..."}
+  1291→                                                  >
+  1292→                                                  <div
+  1293→                                                    className="animate-gold-shimmer opacity-80"
+  1294→-                                                   bis_size={"{\"x\":596,\"y\":2077,\"w\":22,\"h\":20,\"abs_x\":1267..."}
+  1295→                                                  >
+  1296→                                                    <DividerSymbol symbol="diamond">
+  1297→                                                      <svg
+  1298→                                                        width="22"
+  1299→                                                        height="22"
+  1300→                                                        viewBox="0 0 22 22"
+  1301→                                                        fill="none"
+  1302→-                                                       bis_size={"{\"x\":596,\"y\":2077,\"w\":22,\"h\":20,\"abs_x\":..."}
+  1303→                                                      >
+  1304→                                                        <path
+  1305→                                                          d="M11 2l4 9-4 9-4-9z"
+  1306→                                                          stroke="currentColor"
+  1307→                                                          strokeWidth="1.2"
+  1308→                                                          fill="none"
+  1309→-                                                         bis_size={"{\"x\":603,\"y\":2079,\"w\":8,\"h\":17,\"abs_x\"..."}
+  1310→                                                        >
+  1311→                                                        <path
+  1312→                                                          d="M3 11h16"
+  1313→                                                          stroke="currentColor"
+  1314→                                                          strokeWidth="0.8"
+  1315→-                                                         bis_size={"{\"x\":599,\"y\":2088,\"w\":16,\"h\":0,\"abs_x\"..."}
+  1316→                                                        >
+  1317→                                                        <circle
+  1318→                                                          cx="11"
+  1319→                                                          cy="11"
+  1320→                                                          r="1.5"
+  1321→                                                          fill="currentColor"
+  1322→-                                                         bis_size={"{\"x\":606,\"y\":2086,\"w\":3,\"h\":2,\"abs_x\":..."}
+  1323→                                                        >
+  1324→                                                  <div
+  1325→                                                    className="gold-divider h-px flex-1"
+  1326→-                                                   bis_size={"{\"x\":633,\"y\":2087,\"w\":525,\"h\":0,\"abs_x\":1304..."}
+  1327→                                                  >
+  1328→                                              <form
+  1329→                                                onSubmit={function handleSubmit}
+  1330→                                                className="flex flex-col gap-4"
+  1331→-                                               bis_size={"{\"x\":56,\"y\":2122,\"w\":1103,\"h\":330,\"abs_x\":727,\"..."}
+  1332→                                              >
+  1333→                                                <div
+  1334→                                                  className="grid gap-4 md:grid-cols-2"
+  1335→-                                                 bis_size={"{\"x\":56,\"y\":2122,\"w\":1103,\"h\":68,\"abs_x\":727,\..."}
+  1336→                                                >
+  1337→                                                  <div
+  1338→                                                    className="flex flex-col gap-1.5"
+  1339→-                                                   bis_size={"{\"x\":56,\"y\":2122,\"w\":541,\"h\":68,\"abs_x\":727,..."}
+  1340→                                                  >
+  1341→                                                    <Label htmlFor="title" className="font-displ...">
+  1342→                                                      <Label data-slot="label" className="flex items..." htmlFor="title">
+  1343→                                                        <Primitive.label data-slot="label" className="flex items..." ...>
+  1344→                                                          <label
+  1345→                                                            data-slot="label"
+  1346→                                                            className="flex items-center gap-2 font-medium select-none..."
+  1347→                                                            htmlFor="title"
+  1348→                                                            onMouseDown={function onMouseDown}
+  1349→                                                            ref={null}
+  1350→-                                                           bis_size={"{\"x\":56,\"y\":2122,\"w\":541,\"h\":18,\"abs_..."}
+  1351→                                                          >
+  1352→+                                                           Título do Tomo *
+  1353→                                                    <Input id="title" value="" onChange={function onChange} ...>
+  1354→                                                      <input
+  1355→                                                        type={undefined}
+  1356→                                                        data-slot="input"
+  1357→                                                        className="file:text-foreground selection:bg-primary selection..."
+  1358→                                                        id="title"
+  1359→                                                        value=""
+  1360→                                                        onChange={function onChange}
+  1361→                                                        placeholder="Ex.: A Cidade de Deus"
+  1362→                                                        required={true}
+  1363→-                                                       bis_size={"{\"x\":56,\"y\":2148,\"w\":541,\"h\":42,\"abs_x\":..."}
+  1364→                                                      >
+  1365→                                                  <div
+  1366→                                                    className="flex flex-col gap-1.5"
+  1367→-                                                   bis_size={"{\"x\":617,\"y\":2122,\"w\":541,\"h\":68,\"abs_x\":128..."}
+  1368→                                                  >
+  1369→                                                    <Label htmlFor="author" className="font-displ...">
+  1370→                                                      <Label data-slot="label" className="flex items..." htmlFor="author">
+  1371→                                                        <Primitive.label data-slot="label" className="flex items..." ...>
+  1372→                                                          <label
+  1373→                                                            data-slot="label"
+  1374→                                                            className="flex items-center gap-2 font-medium select-none..."
+  1375→                                                            htmlFor="author"
+  1376→                                                            onMouseDown={function onMouseDown}
+  1377→                                                            ref={null}
+  1378→-                                                           bis_size={"{\"x\":617,\"y\":2122,\"w\":541,\"h\":18,\"abs..."}
+  1379→                                                          >
+  1380→+                                                           Autor (opcional)
+  1381→                                                    <Input id="author" value="" onChange={function onChange} ...>
+  1382→                                                      <input
+  1383→                                                        type={undefined}
+  1384→                                                        data-slot="input"
+  1385→                                                        className="file:text-foreground selection:bg-primary selection..."
+  1386→                                                        id="author"
+  1387→                                                        value=""
+  1388→                                                        onChange={function onChange}
+  1389→                                                        placeholder="Ex.: Santo Agostinho"
+  1390→-                                                       bis_size={"{\"x\":617,\"y\":2148,\"w\":541,\"h\":42,\"abs_x\"..."}
+  1391→                                                      >
+  1392→                                                <div
+  1393→                                                  className="grid gap-4 md:grid-cols-2"
+  1394→-                                                 bis_size={"{\"x\":56,\"y\":2210,\"w\":1103,\"h\":68,\"abs_x\":727,\..."}
+  1395→                                                >
+  1396→                                                  <div
+  1397→                                                    className="flex flex-col gap-1.5"
+  1398→-                                                   bis_size={"{\"x\":56,\"y\":2210,\"w\":541,\"h\":68,\"abs_x\":727,..."}
+  1399→                                                  >
+  1400→                                                    <Label htmlFor="startedAt" className="font-displ...">
+  1401→                                                      <Label data-slot="label" className="flex items..." ...>
+  1402→                                                        <Primitive.label data-slot="label" className="flex items..." ...>
+  1403→                                                          <label
+  1404→                                                            data-slot="label"
+  1405→                                                            className="flex items-center gap-2 font-medium select-none..."
+  1406→                                                            htmlFor="startedAt"
+  1407→                                                            onMouseDown={function onMouseDown}
+  1408→                                                            ref={null}
+  1409→-                                                           bis_size={"{\"x\":56,\"y\":2210,\"w\":541,\"h\":18,\"abs_..."}
+  1410→                                                          >
+  1411→+                                                           Data de Início
+  1412→                                                    <Input id="startedAt" type="date" value="2026-08-05" ...>
+  1413→                                                      <input
+  1414→                                                        type="date"
+  1415→                                                        data-slot="input"
+  1416→                                                        className="file:text-foreground placeholder:text-muted-foregro..."
+  1417→                                                        id="startedAt"
+  1418→                                                        value="2026-08-05"
+  1419→                                                        onChange={function onChange}
+  1420→-                                                       bis_size={"{\"x\":56,\"y\":2236,\"w\":541,\"h\":42,\"abs_x\":..."}
+  1421→                                                      >
+  1422→                                                  <div
+  1423→                                                    className="flex items-end gap-3 pb-1"
+  1424→-                                                   bis_size={"{\"x\":617,\"y\":2210,\"w\":541,\"h\":68,\"abs_x\":128..."}
+  1425→                                                  >
+  1426→                                                    <div
+  1427→                                                      className="flex items-center gap-2"
+  1428→-                                                     bis_size={"{\"x\":617,\"y\":2252,\"w\":266,\"h\":21,\"abs_x\":1..."}
+  1429→                                                    >
+  1430→                                                      ...
+  1431→                                                        <SwitchProvider scope={undefined} checked={false} ...>
+  1432→                                                          <Primitive.button type="button" role="switch" ...>
+  1433→                                                            <button
+  1434→                                                              type="button"
+  1435→                                                              role="switch"
+  1436→                                                              aria-checked={false}
+  1437→                                                              aria-required={undefined}
+  1438→                                                              data-state="unchecked"
+  1439→                                                              data-disabled={undefined}
+  1440→                                                              disabled={undefined}
+  1441→                                                              value="on"
+  1442→                                                              data-slot="switch"
+  1443→                                                              className="peer data-[state=checked]:bg-primary data-[st..."
+  1444→                                                              id="finished"
+  1445→                                                              onClick={function handleEvent}
+  1446→                                                              ref={function}
+  1447→-                                                             bis_size={"{\"x\":617,\"y\":2252,\"w\":40,\"h\":21,\"ab..."}
+  1448→                                                            >
+  1449→                                                              <SwitchThumb data-slot="switch-thumb" ...>
+  1450→                                                                <Primitive.span data-state="unchecked" ...>
+  1451→                                                                  <span
+  1452→                                                                    data-state="unchecked"
+  1453→                                                                    data-disabled={undefined}
+  1454→                                                                    data-slot="switch-thumb"
+  1455→                                                                    className="bg-background dark:data-[state=unchecke..."
+  1456→                                                                    ref={null}
+  1457→-                                                                   bis_size={"{\"x\":618,\"y\":2253,\"w\":20,\"h\":1..."}
+  1458→                                                                  >
+  1459→                                                          <SwitchBubbleInput control={null} bubbles={true} ...>
+  1460→                                                            <input
+  1461→                                                              type="checkbox"
+  1462→                                                              aria-hidden={true}
+  1463→                                                              defaultChecked={false}
+  1464→                                                              name={undefined}
+  1465→                                                              value="on"
+  1466→                                                              required={undefined}
+  1467→                                                              disabled={undefined}
+  1468→                                                              form={undefined}
+  1469→                                                              style={{transform:"translateX...",position:"absolute", ...}}
+  1470→                                                              tabIndex={-1}
+  1471→                                                              ref={function}
+  1472→-                                                             bis_size={"{\"x\":604,\"y\":2257,\"w\":13,\"h\":12,\"ab..."}
+  1473→                                                            >
+  1474→                                                      <Label htmlFor="finished" className="flex curso...">
+  1475→                                                        <Label data-slot="label" className="font-mediu..." ...>
+  1476→                                                          <Primitive.label data-slot="label" className="font-mediu..." ...>
+  1477→                                                            <label
+  1478→                                                              data-slot="label"
+  1479→                                                              className="font-medium select-none group-data-[disabled=..."
+  1480→                                                              htmlFor="finished"
+  1481→                                                              onMouseDown={function onMouseDown}
+  1482→                                                              ref={null}
+  1483→-                                                             bis_size={"{\"x\":667,\"y\":2253,\"w\":216,\"h\":18,\"a..."}
+  1484→                                                            >
+  1485→                                                              <ScrollText className="h-3.5 w-3.5">
+  1486→                                                                <svg
+  1487→                                                                  ref={null}
+  1488→                                                                  xmlns="http://www.w3.org/2000/svg"
+  1489→                                                                  width={24}
+  1490→                                                                  height={24}
+  1491→                                                                  viewBox="0 0 24 24"
+  1492→                                                                  fill="none"
+  1493→                                                                  stroke="currentColor"
+  1494→                                                                  strokeWidth={2}
+  1495→                                                                  strokeLinecap="round"
+  1496→                                                                  strokeLinejoin="round"
+  1497→                                                                  className="lucide lucide-scroll-text h-3.5 w-3.5"
+  1498→                                                                  aria-hidden="true"
+  1499→-                                                                 bis_size={"{\"x\":667,\"y\":2255,\"w\":17,\"h\":16,..."}
+  1500→                                                                >
+  1501→                                                                  <path
+  1502→                                                                    d="M15 12h-5"
+  1503→-                                                                   bis_size={"{\"x\":674,\"y\":2263,\"w\":3,\"h\":0,..."}
+  1504→                                                                  >
+  1505→                                                                  <path
+  1506→                                                                    d="M15 8h-5"
+  1507→-                                                                   bis_size={"{\"x\":674,\"y\":2260,\"w\":3,\"h\":0,..."}
+  1508→                                                                  >
+  1509→                                                                  <path
+  1510→                                                                    d="M19 17V5a2 2 0 0 0-2-2H4"
+  1511→-                                                                   bis_size={"{\"x\":670,\"y\":2257,\"w\":10,\"h\":9..."}
+  1512→                                                                  >
+  1513→                                                                  <path
+  1514→                                                                    d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 ..."
+  1515→-                                                                   bis_size={"{\"x\":668,\"y\":2257,\"w\":14,\"h\":1..."}
+  1516→                                                                  >
+  1517→                                                              ...
+  1518→                                                <div
+  1519→                                                  className="flex flex-col gap-1.5"
+  1520→-                                                 bis_size={"{\"x\":56,\"y\":2298,\"w\":1103,\"h\":92,\"abs_x\":727,\..."}
+  1521→                                                >
+  1522→                                                  <Label htmlFor="notes" className="font-displ...">
+  1523→                                                    <Label data-slot="label" className="flex items..." htmlFor="notes">
+  1524→                                                      <Primitive.label data-slot="label" className="flex items..." ...>
+  1525→                                                        <label
+  1526→                                                          data-slot="label"
+  1527→                                                          className="flex items-center gap-2 font-medium select-none g..."
+  1528→                                                          htmlFor="notes"
+  1529→                                                          onMouseDown={function onMouseDown}
+  1530→                                                          ref={null}
+  1531→-                                                         bis_size={"{\"x\":56,\"y\":2298,\"w\":1103,\"h\":18,\"abs_x..."}
+  1532→                                                        >
+  1533→+                                                         Anotações Marginais (opcional)
+  1534→                                                  <Textarea id="notes" value="" onChange={function onChange} ...>
+  1535→                                                    <textarea
+  1536→                                                      data-slot="textarea"
+  1537→                                                      className="focus-visible:border-ring aria-invalid:ring-destructi..."
+  1538→                                                      id="notes"
+  1539→                                                      value=""
+  1540→                                                      onChange={function onChange}
+  1541→                                                      placeholder="Reflexões, citações, impressões..."
+  1542→-                                                     bis_size={"{\"x\":56,\"y\":2324,\"w\":1103,\"h\":66,\"abs_x\":7..."}
+  1543→                                                    >
+  1544→                                                <motion.div whileHover={{scale:1.01}} whileTap={{scale:0.99}}>
+  1545→                                                  <div
+  1546→                                                    tabIndex={0}
+  1547→                                                    style={{}}
+  1548→                                                    ref={function useMotionRef.useCallback}
+  1549→-                                                   bis_size={"{\"x\":56,\"y\":2409,\"w\":1103,\"h\":42,\"abs_x\":727..."}
+  1550→                                                  >
+  1551→                                                    <Button type="submit" disabled={true} className="w-full bg-...">
+  1552→                                                      <button
+  1553→                                                        data-slot="button"
+  1554→                                                        className={"inline-flex items-center justify-center gap-2 whi..."}
+  1555→                                                        type="submit"
+  1556→                                                        disabled={true}
+  1557→-                                                       bis_size={"{\"x\":56,\"y\":2409,\"w\":1103,\"h\":42,\"abs_x\"..."}
+  1558→                                                      >
+  1559→                                                        <Library className="mr-2 h-4 w-4">
+  1560→                                                          <svg
+  1561→                                                            ref={null}
+  1562→                                                            xmlns="http://www.w3.org/2000/svg"
+  1563→                                                            width={24}
+  1564→                                                            height={24}
+  1565→                                                            viewBox="0 0 24 24"
+  1566→                                                            fill="none"
+  1567→                                                            stroke="currentColor"
+  1568→                                                            strokeWidth={2}
+  1569→                                                            strokeLinecap="round"
+  1570→                                                            strokeLinejoin="round"
+  1571→                                                            className="lucide lucide-library mr-2 h-4 w-4"
+  1572→                                                            aria-hidden="true"
+  1573→-                                                           bis_size={"{\"x\":462,\"y\":2421,\"w\":20,\"h\":19,\"abs_..."}
+  1574→                                                          >
+  1575→                                                            <path
+  1576→                                                              d="m16 6 4 14"
+  1577→-                                                             bis_size={"{\"x\":475,\"y\":2426,\"w\":3,\"h\":11,\"abs..."}
+  1578→                                                            >
+  1579→                                                            <path
+  1580→                                                              d="M12 6v14"
+  1581→-                                                             bis_size={"{\"x\":472,\"y\":2426,\"w\":0,\"h\":11,\"abs..."}
+  1582→                                                            >
+  1583→                                                            <path
+  1584→                                                              d="M8 8v12"
+  1585→-                                                             bis_size={"{\"x\":468,\"y\":2427,\"w\":0,\"h\":9,\"abs_..."}
+  1586→                                                            >
+  1587→                                                            <path
+  1588→                                                              d="M4 4v16"
+  1589→-                                                             bis_size={"{\"x\":465,\"y\":2424,\"w\":0,\"h\":12,\"abs..."}
+  1590→                                                            >
+  1591→                                                        ...
+  1592→                                  <section
+  1593→                                    className="mb-14"
+  1594→-                                   bis_size={"{\"x\":20,\"y\":2520,\"w\":1175,\"h\":267,\"abs_x\":691,\"abs_y\":2644}"}
+  1595→                                  >
+  1596→                                    <SectionHeader icon={<BookOpen>} eyebrow="Mesa do Le..." title="Em Leitura" ...>
+  1597→                                      <motion.div initial={{opacity:0,y:16}} whileInView={{opacity:1,y:0}} ...>
+  1598→                                        <div
+  1599→                                          className="mb-6"
+  1600→                                          style={{opacity:0,transform:"translateY..."}}
+  1601→                                          ref={function useMotionRef.useCallback}
+  1602→-                                         bis_size={"{\"x\":20,\"y\":2536,\"w\":1175,\"h\":110,\"abs_x\":691,\"abs_y\..."}
+  1603→                                        >
+  1604→                                          <div
+  1605→                                            className="flex items-center gap-3"
+  1606→-                                           bis_size={"{\"x\":20,\"y\":2536,\"w\":1175,\"h\":25,\"abs_x\":691,\"abs_y..."}
+  1607→                                          >
+  1608→                                            <span
+  1609→                                              className="text-gold"
+  1610→-                                             bis_size={"{\"x\":20,\"y\":2536,\"w\":25,\"h\":25,\"abs_x\":691,\"abs_y..."}
+  1611→                                            >
+  1612→                                              <BookOpen className="h-5 w-5">
+  1613→                                                <svg
+  1614→                                                  ref={null}
+  1615→                                                  xmlns="http://www.w3.org/2000/svg"
+  1616→                                                  width={24}
+  1617→                                                  height={24}
+  1618→                                                  viewBox="0 0 24 24"
+  1619→                                                  fill="none"
+  1620→                                                  stroke="currentColor"
+  1621→                                                  strokeWidth={2}
+  1622→                                                  strokeLinecap="round"
+  1623→                                                  strokeLinejoin="round"
+  1624→                                                  className="lucide lucide-book-open h-5 w-5"
+  1625→                                                  aria-hidden="true"
+  1626→-                                                 bis_size={"{\"x\":20,\"y\":2536,\"w\":25,\"h\":25,\"abs_x\":691,\"a..."}
+  1627→                                                >
+  1628→                                                  <path
+  1629→                                                    d="M12 7v14"
+  1630→-                                                   bis_size={"{\"x\":32,\"y\":2544,\"w\":0,\"h\":14,\"abs_x\":703,\"..."}
+  1631→                                                  >
+  1632→                                                  <path
+  1633→                                                    d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4..."
+  1634→-                                                   bis_size={"{\"x\":22,\"y\":2540,\"w\":20,\"h\":18,\"abs_x\":693,\..."}
+  1635→                                                  >
+  1636→                                            <span
+  1637→                                              className="font-display text-[0.65rem] uppercase tracking-[0.35em] text-..."
+  1638→-                                             bis_size={"{\"x\":60,\"y\":2539,\"w\":172,\"h\":19,\"abs_x\":731,\"abs_..."}
+  1639→                                            >
+  1640→+                                             Mesa do Leitor
+  1641→                                            <div
+  1642→                                              className="gold-divider h-px flex-1"
+  1643→-                                             bis_size={"{\"x\":247,\"y\":2548,\"w\":947,\"h\":1,\"abs_x\":918,\"abs_..."}
+  1644→                                            >
+  1645→                                          <h2
+  1646→                                            className="mt-2 font-display text-2xl font-bold text-parchment md:text-3xl"
+  1647→-                                           bis_size={"{\"x\":20,\"y\":2571,\"w\":1175,\"h\":45,\"abs_x\":691,\"abs_y..."}
+  1648→                                          >
+  1649→+                                           Em Leitura
+  1650→                                          <p
+  1651→                                            className="mt-1 font-body text-sm italic text-parchment/55"
+  1652→-                                           bis_size={"{\"x\":20,\"y\":2621,\"w\":1175,\"h\":25,\"abs_x\":691,\"abs_y..."}
+  1653→                                          >
+  1654→+                                           Tomos abertos sobre o pedestal, aguardando o selo final.
+  1655→                                    <LoadingState message="Consultand...">
+  1656→                                      <div
+  1657→                                        className="wood-panel flex items-center justify-center gap-3 rounded-[var(--ra..."
+  1658→-                                       bis_size={"{\"x\":20,\"y\":2660,\"w\":1175,\"h\":127,\"abs_x\":691,\"abs_y\":..."}
+  1659→                                      >
+  1660→                                        <LoaderCircle className="h-5 w-5 an...">
+  1661→                                          <svg
+  1662→                                            ref={null}
+  1663→                                            xmlns="http://www.w3.org/2000/svg"
+  1664→                                            width={24}
+  1665→                                            height={24}
+  1666→                                            viewBox="0 0 24 24"
+  1667→                                            fill="none"
+  1668→                                            stroke="currentColor"
+  1669→                                            strokeWidth={2}
+  1670→                                            strokeLinecap="round"
+  1671→                                            strokeLinejoin="round"
+  1672→                                            className="lucide lucide-loader-circle h-5 w-5 animate-spin text-gold"
+  1673→                                            aria-hidden="true"
+  1674→-                                           bis_size={"{\"x\":502,\"y\":2706,\"w\":35,\"h\":35,\"abs_x\":1173,\"abs_y..."}
+  1675→                                          >
+  1676→                                            <path
+  1677→                                              d="M21 12a9 9 0 1 1-6.219-8.56"
+  1678→-                                             bis_size={"{\"x\":506,\"y\":2711,\"w\":26,\"h\":26,\"abs_x\":1177,\"abs..."}
+  1679→                                            >
+  1680→                                        <span
+  1681→                                          className="font-body text-sm italic text-parchment/70"
+  1682→-                                         bis_size={"{\"x\":547,\"y\":2711,\"w\":160,\"h\":25,\"abs_x\":1218,\"abs_y\..."}
+  1683→                                        >
+  1684→+                                         Consultando o pedestal...
+  1685→                                  <section
+  1686→                                    className="mb-8"
+  1687→-                                   bis_size={"{\"x\":20,\"y\":2857,\"w\":1175,\"h\":110,\"abs_x\":691,\"abs_y\":2981}"}
+  1688→                                  >
+  1689→                                    <SectionHeader icon={<Scroll>} eyebrow="Arquivo do..." title="Crônica de..." ...>
+  1690→                                      <motion.div initial={{opacity:0,y:16}} whileInView={{opacity:1,y:0}} ...>
+  1691→                                        <div
+  1692→                                          className="mb-6"
+  1693→                                          style={{opacity:0,transform:"translateY..."}}
+  1694→                                          ref={function useMotionRef.useCallback}
+  1695→-                                         bis_size={"{\"x\":20,\"y\":2873,\"w\":1175,\"h\":110,\"abs_x\":691,\"abs_y\..."}
+  1696→                                        >
+  1697→                                          <div
+  1698→                                            className="flex items-center gap-3"
+  1699→-                                           bis_size={"{\"x\":20,\"y\":2873,\"w\":1175,\"h\":25,\"abs_x\":691,\"abs_y..."}
+  1700→                                          >
+  1701→                                            <span
+  1702→                                              className="text-gold"
+  1703→-                                             bis_size={"{\"x\":20,\"y\":2873,\"w\":25,\"h\":25,\"abs_x\":691,\"abs_y..."}
+  1704→                                            >
+  1705→                                              <Scroll className="h-5 w-5">
+  1706→                                                <svg
+  1707→                                                  ref={null}
+  1708→                                                  xmlns="http://www.w3.org/2000/svg"
+  1709→                                                  width={24}
+  1710→                                                  height={24}
+  1711→                                                  viewBox="0 0 24 24"
+  1712→                                                  fill="none"
+  1713→                                                  stroke="currentColor"
+  1714→                                                  strokeWidth={2}
+  1715→                                                  strokeLinecap="round"
+  1716→                                                  strokeLinejoin="round"
+  1717→                                                  className="lucide lucide-scroll h-5 w-5"
+  1718→                                                  aria-hidden="true"
+  1719→-                                                 bis_size={"{\"x\":20,\"y\":2873,\"w\":25,\"h\":25,\"abs_x\":691,\"a..."}
+  1720→                                                >
+  1721→                                                  <path
+  1722→                                                    d="M19 17V5a2 2 0 0 0-2-2H4"
+  1723→-                                                   bis_size={"{\"x\":24,\"y\":2877,\"w\":15,\"h\":14,\"abs_x\":695,\..."}
+  1724→                                                  >
+  1725→                                                  <path
+  1726→                                                    d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 ..."
+  1727→-                                                   bis_size={"{\"x\":22,\"y\":2877,\"w\":20,\"h\":18,\"abs_x\":693,\..."}
+  1728→                                                  >
+  1729→                                            <span
+  1730→                                              className="font-display text-[0.65rem] uppercase tracking-[0.35em] text-..."
+  1731→-                                             bis_size={"{\"x\":60,\"y\":2876,\"w\":240,\"h\":19,\"abs_x\":731,\"abs_..."}
+  1732→                                            >
+  1733→+                                             Arquivo dos Séculos
+  1734→                                            <div
+  1735→                                              className="gold-divider h-px flex-1"
+  1736→-                                             bis_size={"{\"x\":315,\"y\":2885,\"w\":879,\"h\":1,\"abs_x\":986,\"abs_..."}
+  1737→                                            >
+  1738→                                          <h2
+  1739→                                            className="mt-2 font-display text-2xl font-bold text-parchment md:text-3xl"
+  1740→-                                           bis_size={"{\"x\":20,\"y\":2908,\"w\":1175,\"h\":45,\"abs_x\":691,\"abs_y..."}
+  1741→                                          >
+  1742→+                                           Crônica de Leituras
+  1743→                                          <p
+  1744→                                            className="mt-1 font-body text-sm italic text-parchment/55"
+  1745→-                                           bis_size={"{\"x\":20,\"y\":2958,\"w\":1175,\"h\":25,\"abs_x\":691,\"abs_y..."}
+  1746→                                          >
+  1747→+                                           O pergaminho de cada leitura concluída, ordenado pelo dia do selo.
+  1748→                                    <div
+  1749→                                      className="space-y-10"
+  1750→-                                     bis_size={"{\"x\":20,\"y\":2997,\"w\":1175,\"h\":0,\"abs_x\":691,\"abs_y\":3121}"}
+  1751→                                    >
+  1752→                                <footer
+  1753→                                  className="relative z-10 mt-auto border-t border-gold/20 bg-[var(--background)]/85 p..."
+  1754→-                                 bis_size={"{\"x\":0,\"y\":3107,\"w\":1215,\"h\":150,\"abs_x\":671,\"abs_y\":3231}"}
+  1755→                                >
+  1756→                                  <OrnateDivider className="mx-auto mb..." symbol="cross">
+  1757→                                    <div
+  1758→                                      className="flex items-center justify-center gap-3 text-gold mx-auto mb-4 max-w-xs"
+  1759→                                      aria-hidden="true"
+  1760→-                                     bis_size={"{\"x\":407,\"y\":3138,\"w\":400,\"h\":20,\"abs_x\":1078,\"abs_y\":3262}"}
+  1761→                                    >
+  1762→                                      <div
+  1763→                                        className="gold-divider h-px flex-1"
+  1764→-                                       bis_size={"{\"x\":407,\"y\":3148,\"w\":175,\"h\":1,\"abs_x\":1078,\"abs_y\":3..."}
+  1765→                                      >
+  1766→                                      <div
+  1767→                                        className="animate-gold-shimmer opacity-80"
+  1768→-                                       bis_size={"{\"x\":597,\"y\":3138,\"w\":20,\"h\":20,\"abs_x\":1268,\"abs_y\":3..."}
+  1769→                                      >
+  1770→                                        <DividerSymbol symbol="cross">
+  1771→                                          <svg
+  1772→                                            width="20"
+  1773→                                            height="20"
+  1774→                                            viewBox="0 0 20 20"
+  1775→                                            fill="none"
+  1776→-                                           bis_size={"{\"x\":597,\"y\":3138,\"w\":20,\"h\":20,\"abs_x\":1268,\"abs_y..."}
+  1777→                                          >
+  1778→                                            <path
+  1779→                                              d="M10 2v16M4 8h12"
+  1780→                                              stroke="currentColor"
+  1781→                                              strokeWidth="1.5"
+  1782→                                              strokeLinecap="round"
+  1783→-                                             bis_size={"{\"x\":601,\"y\":3140,\"w\":12,\"h\":16,\"abs_x\":1272,\"abs..."}
+  1784→                                            >
+  1785→                                            <circle
+  1786→                                              cx="10"
+  1787→                                              cy="10"
+  1788→                                              r="3"
+  1789→                                              stroke="currentColor"
+  1790→                                              strokeWidth="1"
+  1791→                                              fill="none"
+  1792→-                                             bis_size={"{\"x\":604,\"y\":3145,\"w\":6,\"h\":6,\"abs_x\":1275,\"abs_y..."}
+  1793→                                            >
+  1794→                                      <div
+  1795→                                        className="gold-divider h-px flex-1"
+  1796→-                                       bis_size={"{\"x\":632,\"y\":3148,\"w\":175,\"h\":1,\"abs_x\":1303,\"abs_y\":3..."}
+  1797→                                      >
+  1798→                                  <p
+  1799→                                    className="font-body text-xs italic text-parchment/50"
+  1800→-                                   bis_size={"{\"x\":20,\"y\":3178,\"w\":1175,\"h\":19,\"abs_x\":691,\"abs_y\":3302}"}
+  1801→                                  >
+  1802→+                                   Scriptorum custodita ad perpetuam — “Que os escritos sejam guardados para sempre”
+  1803→                                  <p
+  1804→                                    className="mt-2 font-display text-[0.65rem] uppercase tracking-[0.3em] text-gold/50"
+  1805→-                                   bis_size={"{\"x\":20,\"y\":3208,\"w\":1175,\"h\":19,\"abs_x\":691,\"abs_y\":3332}"}
+  1806→                                  >
+  1807→                        ...
+  1808→                      ...
+  1809→                        <_c>
+  1810→                          <ToastViewport ref={null} className="fixed top-...">
+  1811→                            <DismissableLayerBranch ref={{current:null}} role="region" aria-label="Notificati..." ...>
+  1812→                              <Primitive.div role="region" aria-label="Notificati..." tabIndex={-1} style={{...}} ...>
+  1813→                                <div
+  1814→                                  role="region"
+  1815→                                  aria-label="Notifications (F8)"
+  1816→                                  tabIndex={-1}
+  1817→                                  style={{pointerEvents:"none"}}
+  1818→                                  ref={function}
+  1819→-                                 bis_size={"{\"x\":0,\"y\":3258,\"w\":1215,\"h\":0,\"abs_x\":671,\"abs_y\":3382}"}
+  1820→                                >
+  1821→                                  <ToastCollectionSlot scope={undefined}>
+  1822→                                    <ToastCollectionSlot.Slot ref={function}>
+  1823→                                      <ToastCollectionSlot.SlotClone ref={function}>
+  1824→                                        <Primitive.ol tabIndex={-1} className="fixed top-..." ref={function}>
+  1825→                                          <ol
+  1826→                                            tabIndex={-1}
+  1827→                                            className="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p..."
+  1828→                                            ref={function}
+  1829→-                                           bis_size={"{\"x\":795,\"y\":774,\"w\":420,\"h\":40,\"abs_x\":1466,\"abs_y..."}
+  1830→                                          >
+  1831→                  ...
+  1832→
+  1833→
+  1834→
+  1835→    at div (<anonymous>:null:null)
+  1836→
+  1837→Next.js version: 16.1.3 (Turbopack)
+  1838→

@@ -228,3 +228,23 @@ Stage Summary:
 - Build script limpo e Vercel-friendly.
 - .env.example documentado e versionável; .env real continua ignorado.
 - Passos de deploy documentados para o usuário (ver mensagem final).
+
+---
+Task ID: 7
+Agent: Z.ai Code (main)
+Task: Diagnosticar e corrigir erro de hidratação reportado ("erro do node") — atributos bis_size injetados por extensão de navegador em todos os divs.
+
+Work Log:
+- Lido o arquivo de erro enviado pelo usuário. O diff de hidratação mostrava atributos `bis_size="{...}"` sendo injetados em TODOS os divs da página (metadata wrapper, root div, MonasteryScene, monastery-layer, NightSky, etc.). O prefixo `bis_` é de uma extensão de navegador (Bitdefender TrafficLight ou similar) que mede tamanhos de elementos e injeta atributos antes do React hidratar. A própria mensagem do React cita essa causa: "It can also happen if the client has a browser extension installed which messes with the HTML before React loaded." NÃO é um erro do Node nem do código da aplicação.
+- Embora o erro principal seja da extensão, aproveitei para auditar o código em busca de fontes REAIS de mismatch de hidratação (new Date() / Math.random() no caminho de renderização). Encontrei e corrigi:
+  1. **add-book-form.tsx**: `todayISO()` (com `new Date()`) era chamado no `useState` inicial → o valor do input de data poderia diferir entre servidor e cliente em timezones diferentes. Corrigido com `useClientOnly('add-book-today', todayISO, '')` + `useEffect` que preenche o campo quando a data do cliente chega.
+  2. **reading-desk.tsx (PageRightContent)**: `new Date().toISOString()` no cálculo de "dias de leitura" → servidor e cliente poderiam computar dias diferentes em boundary de timezone. Corrigido com `useClientOnly('desk-now', () => new Date().toISOString(), book.startedAt)` (no SSR usa startedAt como fallback, dando 0 dias; no cliente usa o agora real).
+  3. **page.tsx (footer)**: `new Date().getFullYear()` em "Anno Domini {ano}" → adicionado `suppressHydrationWarning` no <p>.
+  4. **page.tsx (StatsPanel)**: `new Date().getFullYear()` e `new Date().getMonth()` em labels de WaxSeal e MonthlyActivity → extraído para `useClientOnly('stats-now', ...)` retornando {year, month}; passado como props para MonthlyActivity.
+- `bun run lint` passou sem erros.
+- Verificação com Agent Browser: console limpo (sem erros além dos artefatos `bis_` da extensão), página renderiza normalmente, campo de data populado corretamente (2026-08-06), todos os tomos visíveis.
+
+Stage Summary:
+- Erro de hidratação `bis_size` diagnosticado como artefato de extensão de navegador (não é bug do código, não afeta produção no Vercel).
+- Corrigidas fontes reais de mismatch de hidratação: todayISO no formulário, dias de leitura no púlpito, ano/mês nas estatísticas.
+- Código agora impecável quanto a hidratação; qualquer aviso restante no dev console é exclusivamente da extensão do navegador do usuário.
