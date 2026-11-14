@@ -1,0 +1,29 @@
+name: Keep Neon database active
+
+on:
+  schedule:
+    - cron: '17 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  keep-neon-active:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Install PostgreSQL client
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes postgresql-client
+
+      - name: Run a read-only query
+        env:
+          DATABASE_URL: ${{ secrets.NEON_DATABASE_URL }}
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "Configure o secret NEON_DATABASE_URL nas configurações do repositório." >&2
+            exit 1
+          fi
+          psql "$DATABASE_URL" --no-psqlrc --set=ON_ERROR_STOP=1 --command='SELECT 1;'
